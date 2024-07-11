@@ -16,4 +16,4 @@ Taking care of one’s skin is essential for both physical and mental wellbeing.
 1. 
 
 ## Jupyter Notebooks
-- [Data Exploration Notebook](https://colab.research.google.com/github/nicoleli04/CSE151A-Project/tree/main/Skincare_Recommender.ipynb)
+- [Data Exploration Notebook](https://colab.research.google.com/github/nicoleli04/CSE151A-Project/blob/main/Skincare_Recommender.ipynb)
