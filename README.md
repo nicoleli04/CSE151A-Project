@@ -10,6 +10,13 @@ Taking care of one’s skin is essential for both physical and mental wellbeing.
 ## Data Preprocessing
 - Handled missing values and duplicates.
 - Performed feature engineering and text preprocessing.
+- We encoded countries and type
+- created histograms, pairplots and counterplots
+- merged and filtered the data to not include makeup products
+- created similarity matrix to match ratings with products names in skinsort(product data set)
+- merged all rating data sets to into one large data set
+- cleaned data from the new large merged data set
+- We created a threshold in order to filter out uncoorelated product names between skinsort (product data set) and the large review data set
 
 ## Jupyter Notebooks
 - [Skincare Recommender Notebook](https://github.com/nicoleli04/CSE151A-Project/blob/main/Skincare_Recommender.ipynb)
