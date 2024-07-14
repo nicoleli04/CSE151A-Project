@@ -12,8 +12,8 @@ Taking care of one’s skin is essential for both physical and mental wellbeing.
 - Performed feature engineering and text preprocessing.
 
 ## Jupyter Notebooks
-- [Skincare Recommender Notebook]([https://github.com/nicoleli04/CSE151A-Project/blob/main/Skincare_Recommender.ipynb)])
-
+- [Skincare Recommender Notebook](https://github.com/nicoleli04/CSE151A-Project/blob/main/Skincare_Recommender.ipynb)
+  
 ## Group Members
 - Ilia Aballa
 - Kiran Keertipati 
