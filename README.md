@@ -5,18 +5,18 @@ Taking care of one’s skin is essential for both physical and mental wellbeing.
 
 ## Datasets
 - [Skinsort Dataset](https://www.kaggle.com/datasets/kazireyazulhasan/19000-skincare-products-database-of-skinsort): Contains information about skincare products.
-- **__________**: Contains user reviews for skincare products.
+- [Sephora Dataset](https://www.kaggle.com/datasets/nadyinky/sephora-products-and-skincare-reviews): Contains product information and reviews from Sephora.
+- [Indonesia Dataset](https://www.kaggle.com/datasets/hafidahmusthaanah/skincare-review): Contains product information and reviews from Indonesia.
 
 ## Data Preprocessing
 - Handled missing values and duplicates.
 - Performed feature engineering and text preprocessing.
-- We encoded countries and type
-- created histograms, pairplots and counterplots
-- merged and filtered the data to not include makeup products
-- created similarity matrix to match ratings with products names in skinsort(product data set)
-- merged all rating data sets to into one large data set
-- cleaned data from the new large merged data set
-- We created a threshold in order to filter out uncoorelated product names between skinsort (product data set) and the large review data set
+- Merged all rating data sets (Sephora and Indonesia) into one large Reviews Dataset.
+- Removed word-based reviews from the Reviews Dataset, and kept the first 50 reviews for each unique product.
+- Created a similarity matrix to match ratings from our Reviews Dataset with products names on our Skinsort Dataset, setting the similarity threshold to 0.4 to filter out uncorrelated product names between Skinsort and the Reviews Dataset.
+- Merged and filtered the data to exclude irrelevant products such as face, eye, and hair makeup products.
+- Encoded countries and type.
+- Created histograms, pairplots, and counterplots.
 
 ## Jupyter Notebooks
 - [Skincare Recommender Notebook](https://github.com/nicoleli04/CSE151A-Project/blob/main/Skincare_Recommender.ipynb)
