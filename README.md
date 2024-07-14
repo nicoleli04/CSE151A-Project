@@ -22,10 +22,10 @@ Taking care of one’s skin is essential for both physical and mental wellbeing.
 - [Skincare Recommender Notebook](https://github.com/nicoleli04/CSE151A-Project/blob/main/Skincare_Recommender.ipynb)
 
 ## Group Members
-- Ilia Aballa
-- Kiran Keertipati 
+- Ilia Aballa - aballai
+- Kiran Keertipati - KiranKeertipati
 - Leena Khattat
-- Nicole Li 
-- Wang Liu
-- Evelyn Mares-moreno 
+- Nicole Li - nicoleli04
+- Wang Liu - flanneryxiao
+- Evelyn Mares-moreno - emaresmoreno
 
