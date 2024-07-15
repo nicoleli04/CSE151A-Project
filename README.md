@@ -24,7 +24,7 @@ Taking care of one’s skin is essential for both physical and mental wellbeing.
 ## Group Members
 - Ilia Aballa - aballai
 - Kiran Keertipati - KiranKeertipati
-- Leena Khattat
+- Leena Khattat - leenakhattat
 - Nicole Li - nicoleli04
 - Wang Liu - flanneryxiao
 - Evelyn Mares-moreno - emaresmoreno
