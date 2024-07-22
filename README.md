@@ -20,8 +20,8 @@ Taking care of one’s skin is essential for both physical and mental wellbeing.
 
 ## Milestone 3
 - Finished major preprocessing by one hot encoding ingredients, afteruse effects, brand, type
-- Used k-nearest neighbors to recommend products based on the features that we one hot encoded
-- printed the top 5 matches for the product
+- Built our first model using k-nearest neighbors to recommend products based on the features that we one hot encoded
+- Printed the top 5 matches for the product using our model
 
 ## Conclusion
 Our first model demonstrates the ability to generate recommendations based on the input product's features. The input product appears as the closest match to itself, which is expected because it shares all its features with itself. However, we noticed that some recommended products are quite different from the input product. For example, when we input "glycolic acid 7 toning solution," one of the recommendations is a lip balm. We believe this discrepancy arises because we have numerous categories that are one-hot encoded, and the model is evaluating the similarities across all these categories. To improve our model, we could assign weights to different categories so that we can ensure that the type of product carries more importance than the ingredients. This way, recommendations will be more aligned with the primary function of the product. We can also perform dimensionality reduction by applying techniques like PCA to reduce the dimensionality of the feature space and focus on the important features. 
