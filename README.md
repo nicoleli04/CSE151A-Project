@@ -1,4 +1,4 @@
-# Skincare Recommender System -- Unsupervised Learning
+# Skincare Recommender System
 
 ## Abstract
 Taking care of one’s skin is essential for both physical and mental wellbeing. Our model aims to create a recommender system that suggests products aligned with users' skincare concerns through a quick survey. We will use explit feedback like reviews from other users to identify suitable skincare products. Using datasets from Ulta and Sephora, we acknowledge potential biases in our model, such as the exclusion of lesser-known products, a focus on products used primarily by Westerners, and a predominance of data representing women or female-identifying individuals. Despite these biases, our ultimate goal is to enhance accessibility and knowledge of skincare for people of all skin types who aspire to improve their skincare routine.
@@ -23,8 +23,14 @@ Taking care of one’s skin is essential for both physical and mental wellbeing.
 - Built our first model using k-nearest neighbors to recommend products based on the features that we one hot encoded
 - Printed the top 5 matches for the product using our model
 
-## Conclusion
+## Conclusion (First Model)
 Our first model demonstrates the ability to generate recommendations based on the input product's features. The input product appears as the closest match to itself, which is expected because it shares all its features with itself. However, we noticed that some recommended products are quite different from the input product. For example, when we input "glycolic acid 7 toning solution," one of the recommendations is a lip balm. We believe this discrepancy arises because we have numerous categories that are one-hot encoded, and the model is evaluating the similarities across all these categories. To improve our model, we could assign weights to different categories so that we can ensure that the type of product carries more importance than the ingredients. This way, recommendations will be more aligned with the primary function of the product. We can also perform dimensionality reduction by applying techniques like PCA to reduce the dimensionality of the feature space and focus on the important features. 
+
+*After office hours we found out that we should change our task because our dataset does not have a ground truth so we are now trying to predict the afteruse results of the product using the ingredients of the product.*
+
+## Milestone Updated
+- deleted the ingredients that do not appear often so we are only left with ingredients that occur often
+- 
 
 ## Jupyter Notebooks
 - [Skincare Recommender Notebook](https://github.com/nicoleli04/CSE151A-Project/blob/main/Skincare_Recommender.ipynb)
