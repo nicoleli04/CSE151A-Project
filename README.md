@@ -26,7 +26,7 @@ Taking care of one’s skin is essential for both physical and mental wellbeing.
 ## Conclusion (First Model)
 Our first model demonstrates the ability to generate recommendations based on the input product's features. The input product appears as the closest match to itself, which is expected because it shares all its features with itself. However, we noticed that some recommended products are quite different from the input product. For example, when we input "glycolic acid 7 toning solution," one of the recommendations is a lip balm. We believe this discrepancy arises because we have numerous categories that are one-hot encoded, and the model is evaluating the similarities across all these categories. To improve our model, we could assign weights to different categories so that we can ensure that the type of product carries more importance than the ingredients. This way, recommendations will be more aligned with the primary function of the product. We can also perform dimensionality reduction by applying techniques like PCA to reduce the dimensionality of the feature space and focus on the important features. 
 
-*After office hours we found out that we should change our task because our dataset does not have a ground truth so we are now trying to predict the afteruse results of the product using the ingredients of the product.*
+*After office hours we found out that we should change our task because our dataset does not have a ground truth so we are now trying to change our model to predict the prices using features from the dataset*
 
 ## Milestone Updated
 - Used our Sephora dataset and one-hot encoded the product types.
