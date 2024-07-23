@@ -15,7 +15,9 @@ Taking care of one’s skin is essential for both physical and mental wellbeing.
 - Removed word-based reviews from the Reviews Dataset, and kept the first 50 reviews for each unique product.
 - Created a similarity matrix to match ratings from our Reviews Dataset with products names on our Skinsort Dataset, setting the similarity threshold to 0.4 to filter out uncorrelated product names between Skinsort and the Reviews Dataset.
 - Merged and filtered the data to exclude irrelevant products such as face, eye, and hair makeup products.
-- Encoded countries and type.
+- Encoded ingediants, brand, results and type.
+- One-Hot-Encoded ingrediants, afteruse, brand and type
+- dropped null values held in our data set
 - Created histograms, pairplots, and counterplots.
 
 ## Milestone 3
