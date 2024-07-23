@@ -29,8 +29,15 @@ Our first model demonstrates the ability to generate recommendations based on th
 *After office hours we found out that we should change our task because our dataset does not have a ground truth so we are now trying to predict the afteruse results of the product using the ingredients of the product.*
 
 ## Milestone Updated
-- deleted the ingredients that do not appear often so we are only left with ingredients that occur often
-- 
+- Used our Sephora dataset and one-hot encoded the product types.
+- Cleaned the dataset by removing columns with missing values (NaNs).
+- Utilized parameters such as ratings, like count, brand, and type to predict the prices.
+- Split the dataset into training and testing sets.
+- Calculated the mean squared error.
+- Plotted scatter plots for coefficients.
+
+## Conclusion (Second Model Updated)
+Our second model uses ratings, like count, brand, and type of the product to predict the price of the product through linear regression. We calculated the mean squared error and found that both the training error and the testing error are quite high. To improve the model, we propose trying polynomial regression to see if it provides a better fit for the data or using perform feature engineering like incorporating interactions between features or adding new relevant parameters to estimate the prices more accurately.
 
 ## Jupyter Notebooks
 - [Skincare Recommender Notebook](https://github.com/nicoleli04/CSE151A-Project/blob/main/Skincare_Recommender.ipynb)
