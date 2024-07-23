@@ -43,7 +43,7 @@ Our second model uses ratings, like count, brand, and type of the product to pre
 
 ## Jupyter Notebooks
 - [Skincare Recommender Notebook](https://github.com/nicoleli04/CSE151A-Project/blob/main/Skincare_Recommender.ipynb)
-- [Skincare Recommender with Two Models](https://colab.research.google.com/drive/1ikVUfFlXJ1gBJLv_33prBmZeSIy0Pl07#scrollTo=-PKycgVkKzLA)
+- [Skincare Recommender with Two Models](https://github.com/nicoleli04/CSE151A-Project/blob/main/Two_Model_Predictor_Skincare_Recommender.ipynb)
 
 ## Group Members
 - Ilia Aballa
