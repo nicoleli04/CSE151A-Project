@@ -1,5 +1,34 @@
 # Skincare Recommender System
 
+## Introduction:
+Taking care of one’s skin is essential for both physical and mental wellbeing, however finding the right skincare products can be challenging given the sheer variety available and the subjective nature of product effectivenes. The goal of our project is the address this challenge by creating a recommender system that suggests skincare products based on user concerns and preferences. Additionly, this projects aims to predict product prices and customer reviews, providing valuable insights into the cost dynamics of the skincare market. This project is particularly interesting because it combines elements of machine learning with skincare. By leveraging datasets from well-know beuaty retailers and by focussing on recommendations, this project has the potential to make skincare advice more accessible and personalized. Overall the broader impact of this project includes the personilzation of skincare, increased accessibility and economic insights.
+
+## Figures:
+
+## Methods Section:
+### Data Exploration 
+### Preprocessing
+### Model 1: Recommendation System 
+### Model 2: Linear Regression (Price and Reviews)
+### Model 3: Logistic Regression (Acne product recommender)
+
+## Results Section:
+
+## Discussion Section
+
+## Conclusion
+
+## Statement of Collaboration
+We all joined zoom meetings, or met in-person as a team to work on the project. We would share our screen and take turns programming different sections. We brainstormed all the ideas for the project together. We also took turns going to office hours, and sometimes all of us attended together.
+Evelyn Mares-moreno: 
+Ilia Aballa:
+Kiran Keertipati:
+Leena Khattat:
+Nicole Li:
+Wang Liu:
+
+
+
 ## Abstract
 Taking care of one’s skin is essential for both physical and mental wellbeing. Our model aims to create a recommender system that suggests products aligned with users' skincare concerns through a quick survey. We will use explit feedback like reviews from other users to identify suitable skincare products. Using datasets from Ulta and Sephora, we acknowledge potential biases in our model, such as the exclusion of lesser-known products, a focus on products used primarily by Westerners, and a predominance of data representing women or female-identifying individuals. Despite these biases, our ultimate goal is to enhance accessibility and knowledge of skincare for people of all skin types who aspire to improve their skincare routine.
 
@@ -51,5 +80,5 @@ Our second model uses ratings, like count, brand, and type of the product to pre
 - Leena Khattat
 - Nicole Li 
 - Wang Liu
-- Evelyn Mares-moreno 
+- Evelyn Mares-moreno
 
