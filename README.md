@@ -1,5 +1,8 @@
 # Skincare Recommender System
 
+#MILESTONE 4 NOTEBOOK:
+[MileStone 4 nb](https://colab.research.google.com/drive/1UZuKvfh_-BFqsnquGwFd7OzI7wOTJZH0#scrollTo=MTfIhu3hAh8P)
+
 ## Introduction:
 Taking care of one’s skin is essential for both physical and mental wellbeing, however finding the right skincare products can be challenging given the sheer variety available and the subjective nature of product effectivenes. The goal of our project is the address this challenge by creating a recommender system that suggests skincare products based on user concerns and preferences. Additionly, this projects aims to predict product prices and customer reviews, providing valuable insights into the cost dynamics of the skincare market. This project is particularly interesting because it combines elements of machine learning with skincare. By leveraging datasets from well-know beuaty retailers and by focussing on recommendations, this project has the potential to make skincare advice more accessible and personalized. Overall the broader impact of this project includes the personilzation of skincare, increased accessibility and economic insights.
 
