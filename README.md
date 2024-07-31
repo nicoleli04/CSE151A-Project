@@ -1,6 +1,6 @@
 # Skincare Recommender System
 
-#MILESTONE 4 NOTEBOOK:
+#MILESTONE 4 NOTEBOOK:#
 [MileStone 4 nb](https://colab.research.google.com/drive/1UZuKvfh_-BFqsnquGwFd7OzI7wOTJZH0#scrollTo=MTfIhu3hAh8P)
 
 ## Introduction:
@@ -18,12 +18,30 @@ We were unsure of what exact model we would want to use, as a recommendation sys
 
 
 ## Figures:
+Below is a figure that shows a tree with the different types of Recommender Systems, from the research paper [A systematic review and research perspective on recommender systems](https://journalofbigdata.springeropen.com/articles/10.1186/s40537-022-00592-5)
+
+![image](https://github.com/user-attachments/assets/03af8f99-80ee-41e8-a8c8-b13b49d76752)
+
+The approach that seemed the most 
+
+
+
 
 ## Methods Section:
+
+
 ### Data Exploration 
+
+
 ### Preprocessing
-### Model 1: Recommendation System 
+
+
+### Model 1: Recommendation System
+
+
 ### Model 2: Linear Regression (Price and Reviews)
+
+
 ### Model 3: Logistic Regression (Acne product recommender)
 
 ## Results Section:
@@ -33,14 +51,21 @@ We were unsure of what exact model we would want to use, as a recommendation sys
 ## Conclusion
 
 ## Statement of Collaboration
-We all joined zoom meetings, or met in-person as a team to work on the project. We would share our screen and take turns programming different sections. We brainstormed all the ideas for the project together. We also took turns going to office hours, and sometimes all of us attended together.
-Evelyn Mares-moreno: 
-Ilia Aballa:
-Kiran Keertipati:
-Leena Khattat:
-Nicole Li:
-Wang Liu:
+Overall, all members contributed to the project, as the project was mostly worked on with multiple people working together at a time. We all joined several zoom meetings together, or met in-person as a team to work on the project. We would share our screen and take turns programming different sections, often with feedback or edits from the others. We brainstormed all the ideas for the project together, bouncing ideas off of and changing ideas based on everybody's feedback. We also took turns going to office hours to discuss with TAs, and sometimes all of us attended together. For the more specific tasks, they are listed below. 
 
+Evelyn Mares-moreno: Updated Milestone 4 notebook,   
+
+Ilia Aballa: Uploaded early datasets, helped to organize some meetings/reserve study room, completed writeup
+
+Kiran Keertipati: Organized many meetings, met with Brian one on one to discuss the project, main screen-sharer for group coding sessions
+
+Leena Khattat: Helped with encoding implementation, implemented LogReg model for Milestone 4
+
+Nicole Li: Created Github Repo, helped write the similarity matrix 
+
+Wang Liu: Helped to upload large files to Github and remove unnecessary files, helped write similarity matrix 
+
+All: Helped clean/organize/understand data, participated in group coding sessions, took turns submitting Milestones on Gradescope, updated the README in some way over the four milestones
 
 
 ## Abstract
