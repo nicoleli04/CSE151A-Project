@@ -53,7 +53,7 @@ figure from Section 3
 ![image](https://github.com/user-attachments/assets/47ad4e5e-ebef-4dd9-bb27-004eaddc5bd3)
 
 
-Below is our confusion matrix for our Logistic Regression model. We observe that the model predicts the class very accurately most of the time.
+Below is our confusion matrix for our Logistic Regression model. We observe that the model predicts the class very accurately most of the time. We can see that in this run it only misidentified or was 'wrong' 7 times.
 Figure for Section 3
 ![image](https://github.com/user-attachments/assets/b5113c49-82ff-444b-b27a-50b961a29331)
 
