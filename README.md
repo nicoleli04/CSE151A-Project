@@ -967,7 +967,13 @@ We did not end up continuing with this version of the project, as after we visit
 
 
 ### Model 3 Discussion
+In our third model, we decided to tweak the project from a recommendation system to a classifier. Now, our goal was to create a model that would be able to predict if a certain product was good for fighting acne. 
 
+To tackle this, we decided to implement a logistic regression model. This meant that we had to explore and preprocess our data once more to better serve this purpose. These specific methods are not explicitly listed in the writeup, but a link to the notebook is attached. In our preprocessing, we tried to single out products that contained the word “acne” in their results/effect column. In this column, there is both an “Acne Trigger” and “Acne Fighting” category. By keeping both, we are able to train the model on “good” products (those that are acne fighting) and “bad” products (those that are acne triggering). We then get rid of any lingering null values as normal. 
+
+We set our X to be the column of ingredients, and our y to be the ‘Acne Fighting’ data, and used a MultiLabelBinarizer to one hot encode all of our ingredients in our X. We then split the data in an 80-20 split, created our model, predicted our values, and checked for accuracy. We also created a confusion matrix for the model, and plotted our results. 
+
+This model seemed to produce a much better scatterplot than our previous models, and also seemed to have a good accuracy rating. We also printed out a column of “important ingredients,” as these ingredients seemed to contribute most to whether a product was acne fighting or not. Viewing the printed ingredients, we were able to verify that these ingredients are indeed used to prevent acne, helping us believe that our model was effective.
 
 
 ### Model 4 Discussion
