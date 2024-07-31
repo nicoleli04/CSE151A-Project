@@ -63,7 +63,7 @@ The figure below shows the decrease in log loss. This is exactly what we want to
 Figure from Model 4
 ![image](https://github.com/user-attachments/assets/66202607-befe-4c2e-bc40-4b039eab6783)
 
-
+The model below is an accuracy graph. This indicates that our model keeps getting better.
 figure from Model 4
 ![image](https://github.com/user-attachments/assets/943ea906-cbb5-4434-b34c-d463eece1f6a)
 
