@@ -986,7 +986,7 @@ We then plot the history of the model, to keep an eye on our loss as the epochs 
 
 To improve on this model, we could have tried out other configurations of hidden layers and activation functions, further tweaking and improving its overall performance. We could have also tried to test it further by including more 'noise' to the data that the model would have to sort through. 
 
-## Model 3 vs Model 4 Comparison
+### Model 3 vs Model 4 Comparison
 Based on the results from the classification report, the logistic regression model (model 3) slightly outperforms the neural network model (model 4) in terms of accuracy, precision, and recall. The logistic regression model shows better overall performance for our dataset. Both our model 3 and model 4 have good accuracy, with scores of 0.99 and 0.97 respectively.
 
 ## Conclusion <a name="conclusion"></a>
