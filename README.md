@@ -6,6 +6,7 @@
 - [MileStone 4: Model 3 & 4 Notebook](https://colab.research.google.com/drive/1UZuKvfh_-BFqsnquGwFd7OzI7wOTJZH0#scrollTo=MTfIhu3hAh8P)
 
 # Writeup Table of Contents:
+Model 3 and Model 4 use the same dataset and solve the same issue.
 1. [Introduction](#introduction)
 2. [Figures](#figures)
 3. [Methods Section](#methods)
