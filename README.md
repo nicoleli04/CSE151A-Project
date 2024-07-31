@@ -47,9 +47,10 @@ Below is a figure that shows a tree with the different types of Recommender Syst
 
 
 ![image](https://github.com/user-attachments/assets/f2c3c6e0-3830-4249-9875-213e346586dc)
-
+Pictured above is a graph of the model coefficients for our Logistic Regression Model (model 3). We see many coefficients pictured because we consider each ingredient in our model, resulting in many different ingredients being factored in. We used a threshold of 2 to determine which ingredients have the most significance, and that gave us our top 5 ingredients that help fight acne: Niacinamide, Retinol, Retinyl Palmitate, Salicyic Acid and Salicyic Acid 2%. 
 
 ![image](https://github.com/user-attachments/assets/47ad4e5e-ebef-4dd9-bb27-004eaddc5bd3)
+Above is our confusion matrix for our Logistic Regression model. We observe that the model predicts the class very accurately most of the time.
 
 ## Methods Section: <a name="methods"></a>
 ### Data Exploration <a name="data"></a>
