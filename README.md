@@ -53,7 +53,7 @@ figure from Section 3
 ![image](https://github.com/user-attachments/assets/47ad4e5e-ebef-4dd9-bb27-004eaddc5bd3)
 
 
-Below is our confusion matrix for our Logistic Regression model. We observe that the model predicts the class very accurately most of the time. We can see that in this run it only misidentified or was 'wrong' 7 times.
+Below is our confusion matrix for our Logistic Regression model. We observe that the model predicts the class very accurately most of the time. We can see that in this run it only misidentified or was 'wrong' 7 times. Wrong is identified as misrepresenting the outcome, in this section it would specifically mean that our model miss represented the type of acne result the product would product. For example, one error could be shown as identifying a product as acne fighting but in reality the product was an acne trigger. 
 Figure for Section 3
 ![image](https://github.com/user-attachments/assets/b5113c49-82ff-444b-b27a-50b961a29331)
 
