@@ -1004,6 +1004,8 @@ To improve on this model, we could have tried out other configurations of hidden
 ### Model 3 vs Model 4 Comparison
 Based on the results from the classification report, the logistic regression model (model 3) slightly outperforms the neural network model (model 4) in terms of accuracy, precision, and recall. The logistic regression model shows better overall performance for our dataset. Both our model 3 and model 4 have good accuracy, with scores of 0.99 and 0.97 respectively.
 
+We were surprised by the high accuracy achieved by both of our models. We discovered that the original website (skinsort) generates the after-use effect labels based on the ingredients, which is a similar approach to our methodology. This explains the high accuracy of our models.
+
 ## Conclusion <a name="conclusion"></a>
 In conclusion, overall this project was a great learning experience for our group, as we were forced to work with multiple types of models causing us to work with unique concepts, even those that were not covered explicitly in class (NearestNeighbors, similarity matrices when it was only week 2, e.t.c.). However, I (Ilia) believe that a big issue with our project was scope. Our initial idea was a very appealing one, but because our datasets were not of the best quality, this made it difficult for us as the project went on. There was a lot of cleaning and preprocessing to complete, forcing us to spend less time on implementation of the models themselves, leading to many errors, issues, and gaps in knowledge that could not be filled within the Milestone deadlines. 
 
