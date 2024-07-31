@@ -1,6 +1,7 @@
 # Skincare Recommender System
 
-#MILESTONE 4 NOTEBOOK:#
+# MILESTONE 4 NOTEBOOK: #
+
 [MileStone 4 nb](https://colab.research.google.com/drive/1UZuKvfh_-BFqsnquGwFd7OzI7wOTJZH0#scrollTo=MTfIhu3hAh8P)
 
 # WORK IN PROGRESS #
@@ -34,63 +35,503 @@ We were unsure of what exact model we would want to use, as a recommendation sys
 
 
 ## Figures: <a name="figures"></a>
+Here is the first figure that we used to help understand how our model should work, from [this Kaggle notebook](https://www.kaggle.com/code/dyahnurlita/skincare-recommendation-system-using-cf-method). We found it because we were searching for similar notebooks as we did not want to accidentally copy someone else's work. While this user also implemented a recommendation system, theirs is different from ours as they use reviews and rating as the main method for recommending a product, while ours is different, focusing instead on other things like ingredients and use of the product. This graphic was helpful in developing our understanding of the reviews based recommendation system. 
 
-Below is a figure that shows a tree with the different types of Recommender Systems, from the research paper [A systematic review and research perspective on recommender systems](https://journalofbigdata.springeropen.com/articles/10.1186/s40537-022-00592-5)
-
-![image](https://github.com/user-attachments/assets/03af8f99-80ee-41e8-a8c8-b13b49d76752)
-
-The approach that seemed the most relevant to our problem is a model-based filtering technique where we use both association techniques and clustering approaches to see what products are the most similar to one another.
-
-Here is another figure that we used to help understand how our model should work, from (this Kaggle notebook)[https://www.kaggle.com/code/dyahnurlita/skincare-recommendation-system-using-cf-method]. While they also implemented a recommendation system, theirs is different from ours as they use reviews and rating as the main method for recommending a product, while ours is different, focusing instead on other things like ingredients and use of the product. 
 ![image](https://github.com/user-attachments/assets/48c185fc-91fd-4ebe-a118-c757d205f0f0)
 
 
+Below is a figure that shows a tree with the different types of Recommender Systems, from the research paper [A systematic review and research perspective on recommender systems](https://journalofbigdata.springeropen.com/articles/10.1186/s40537-022-00592-5). The approach that seemed the most relevant to our problem is a model-based filtering technique where we use both association techniques and clustering approaches to see what products are the most similar to one another. However, there are also elements of memory-based filtering based on items. So, in the end our model could be described as a hybrid model using both model and memory-based filtering techniques.
 
-
-
+![image](https://github.com/user-attachments/assets/03af8f99-80ee-41e8-a8c8-b13b49d76752) 
 
 ## Methods Section: <a name="methods"></a>
-
-
 ### Data Exploration <a name="data"></a>
+In exploring our data, we used the following methods:
+~~~ 
+# read in datasets
+sephora = pd.read_csv('/content/CSE151A-Project/SephoraData.csv')
+indonesia = pd.read_csv('/content/CSE151A-Project/IndonesiaReviews.csv')
+skinsort = pd.read_csv('/content/CSE151A-Project/SkinsortData.csv')
+~~~
+
+~~~
+# preview datasets
+sephora
+indonesia
+skinsort
+~~~
+
+~~~
+# check number of prices with 0
+sephora.columns
+sum(sephora['price_usd'] == 0)
+sephora['price_usd'].value_counts()
+~~~
+
+~~~
+sum(indonesia['Price'] == 0)
+~~~
+
+~~~
+# reviewing 'afteruse' column
+skinsort['afteruse'][8]
+~~~
 
 
 ### Preprocessing <a name="preprocessing"></a>
+In preprocessing our data, we used the following methods:
+
+#### Section 1: 
+~~~
+sns.pairplot(merged_df, hue ='Country', palette='RdBu')
+~~~
+
+~~~
+merged_df.dropna(subset=['Results'], inplace=True)
+merged_df.shape
+~~~
+
+~~~
+merged_df.describe()
+merged_df.info()
+~~~
+
+~~~
+merged_df['Type'].dropna()
+~~~
+
+~~~
+# renaming columns to match one another 
+indonesia.rename(columns = {"Product": "name", "OverallRating": "rating"}, inplace = True)
+sephora.rename(columns = {"product_name": "name", "price_usd":"Price"}, inplace = True)
+
+# grabbing only name, rating, and price from each dataframe
+s = sephora[['name', 'rating', 'Price']] 
+i = indonesia[['name', 'rating', 'Price']]
+
+reviews = pd.concat([s, i]) #concatenate the two datasets into the reviews dataset
+reviews = reviews.drop_duplicates(subset=['name']) #drop duplicates
+reviews.shape
+reviews.value_counts('name')
+~~~
+
+#### Section 2:
+The following is the similarity matrix code we used:
+~~~
+from sklearn.feature_extraction.text import TfidfVectorizer #to vectorize
+from sklearn.metrics.pairwise import cosine_similarity #to create the similarity matrix
+import re #regular expression operations
+
+products_df = pd.DataFrame(skinsort)
+reviews_df = pd.DataFrame(reviews)
+
+def preprocess_text(text):
+    text = text.lower()
+    text = re.sub(r'\W+', ' ', text)
+    return text
+
+products_df['name'] = products_df['name'].apply(preprocess_text)
+reviews_df['name'] = reviews_df['name'].apply(preprocess_text)
+
+vectorizer = TfidfVectorizer()
+tfidf_products = vectorizer.fit_transform(products_df['name'])
+tfidf_reviews = vectorizer.transform(reviews_df['name'])
+
+similarity_matrix = cosine_similarity(tfidf_reviews, tfidf_products)
+
+matched_products = []
+similarity_threshold = 0.4  # Set your desired similarity threshold here
+
+sim_matrix_copy = similarity_matrix.copy()
+
+for i in range(len(reviews_df)):
+    # Find the index of the highest similarity score for the current review
+    best_match_idx = np.argmax(sim_matrix_copy[i])
+    # Check if the highest similarity score is above the threshold
+    if sim_matrix_copy[i, best_match_idx] >= similarity_threshold:
+        # Append the matched product from products_df
+        matched_products.append(products_df['name'].iloc[best_match_idx])
+        # Set the highest similarity score to a very low value to prevent re-matching
+        sim_matrix_copy[:, best_match_idx] = -1
+    else:
+        # If no match is found above the threshold, append None
+        matched_products.append(None)
+
+reviews_df['Matched_Product'] = matched_products
+
+merged_df = products_df.merge(reviews_df.drop(columns='name'), left_on='name', right_on='Matched_Product', how='left')
+
+merged_df = merged_df.dropna(subset=['Matched_Product', 'rating'])
+
+merged_df = merged_df.drop_duplicates('name').drop_duplicates('Matched_Product').drop(columns=['Matched_Product'])
+
+merged_df
+merged_df.to_csv('finalskincarelist_df.csv', index=False)
+merged_df.head()
+~~~
+
+Other preprocessing methods: 
+~~~
+merged_df.rename(columns = {"brand": "Brand", "name": "Name", "type": "Type", "country": "Country", "ingridients":"Ingredients", "afterUse": "Results", "rating": "Rating"}, inplace = True)
+merged_df.head()
+~~~
+
+~~~
+merged_df.dropna(subset=['Results'], inplace=True)
+merged_df.shape
+~~~
+
+~~~
+merged_df.describe()
+~~~
+
+~~~
+merged_df.info()
+~~~
+
+~~~
+merged_df["Type"].dropna()
+~~~
+
+~~~
+merged_df.loc[merged_df['Type'] == np.nan]
+~~~
+
+~~~
+merged_df['Type'].value_counts()
+~~~
+
+~~~
+merged_df["Country"].fillna("Unknown", inplace=True)
+merged_df["Country"].value_counts()
+~~~
+
+
+We used the following methods for Encoding our Data:
+~~~
+from sklearn.preprocessing import LabelEncoder
+le = LabelEncoder()
+merged_df['Type_label'] = le.fit_transform(merged_df['Type'])
+merged_df['Country_label'] = le.fit_transform(merged_df['Country'])
+~~~
+
+~~~
+from sklearn.preprocessing import OneHotEncoder
+
+encoder = OneHotEncoder()
+
+one_hot_encoded = encoder.fit_transform(merged_df[['Brand']]).toarray()
+
+one_hot_df = pd.DataFrame(one_hot_encoded, columns=encoder.get_feature_names_out(['Brand']))
+
+merged_df = merged_df.join(one_hot_df)
+
+merged_df.drop('Brand', axis=1, inplace=True)
+
+merged_df.head()
+~~~
+
+~~~
+from sklearn.preprocessing import MultiLabelBinarizer
+
+def str_to_list(x):
+  return x.strip().split(',')
+
+merged_df['Results'] = merged_df['Results'].dropna().apply(str_to_list)
+
+mlb = MultiLabelBinarizer()
+
+one_hot_encoded = mlb.fit_transform(merged_df['Results'])
+
+one_hot_df = pd.DataFrame(one_hot_encoded, columns=mlb.classes_)
+
+merged_df = merged_df.join(one_hot_df)
+~~~
+
+~~~
+
+from sklearn.preprocessing import MultiLabelBinarizer
+
+def str_to_list(x):
+  return x.strip().split(',')
+
+merged_df['Ingredients'] = merged_df['Ingredients'].dropna().apply(str_to_list)
+
+
+mlb1 = MultiLabelBinarizer()
+
+one_hot_encoded1 = mlb1.fit_transform(merged_df['Ingredients'])
+
+one_hot_df1 = pd.DataFrame(one_hot_encoded1, columns=mlb1.classes_)
+
+merged_df = merged_df.join(one_hot_df1)
+~~~
+
+~~~
+encoder_type = OneHotEncoder()
+
+one_hot_encoded_type = encoder_type.fit_transform(merged_df[['Type']]).toarray()
+
+one_hot_df_type = pd.DataFrame(one_hot_encoded_type, columns=encoder_type.get_feature_names_out(['Type']))
+
+merged_df = merged_df.join(one_hot_df_type)
+
+merged_df.drop('Type', axis=1, inplace=True)
+
+merged_df.head()
+~~~
+
+~~~
+encoded = merged_df.drop(columns=["Country", "Ingredients", "Results", "Type_label", "Type_nan"]).dropna()
+encoded.columns
+~~~
 
 
 ### Model 1: Recommendation System <a name="model1"></a>
+The following methods were used for training our first model:
+~~~
+from sklearn.model_selection import train_test_split
+X_train, X_test, y_train, y_test = train_test_split(merged_df.drop(columns=["Name"]), merged_df['Name'], test_size=0.2, random_state=42)
 
+
+from sklearn.neighbors import NearestNeighbors
+
+recommender = NearestNeighbors(metric='cosine')
+recommender.fit(encoded.drop(columns=["Name"]))
+~~~
+
+~~~
+product_index = 0
+
+num_recommendations = 5
+
+_, recommendations = recommender.kneighbors(encoded.drop(columns=["Name"]).iloc[[product_index]], n_neighbors=num_recommendations)
+
+recommended_products = merged_df.iloc[recommendations[0]]['Name']
+
+print("OG product:" +  merged_df.loc[product_index,"Name"] + "\nBrand:" + merged_df.loc[product_index,"Name"] )
+print("Recommended Products:")
+for product in recommended_products:
+    print(product + "\nBrand:" + merged_df.loc[merged_df['Name'] == product, 'Name'].iloc[0])
+~~~
+
+~~~
+product_index = 0
+
+num_recommendations = 5
+
+_, recommendations = recommender.kneighbors(encoded.drop(columns=["Name"]).iloc[[product_index]], n_neighbors=num_recommendations)
+
+recommended_indices = recommendations[0]
+
+print("OG Product:")
+print(merged_df.iloc[product_index])
+
+print("\nRecommended Products:")
+for index in recommended_indices:
+    print(merged_df.iloc[index])
+    print("\n")
+~~~
 
 ### Model 2: Linear Regression (Price and Reviews) <a name="model2"></a>
+The following methods were used for training our second model:
+~~~
+import pandas as pd
+import seaborn as sns
+from sklearn.model_selection import train_test_split    
+~~~
+
+~~~
+df = sephora
+df.columns
+~~~
+
+~~~
+df_final = df[["name","loves_count", "brand_id", "out_of_stock", "rating", "primary_category","Price", 'reviews', 'online_only', 'new', 'child_count']]
+df_final.head()
+~~~
+
+~~~
+encoder_type = OneHotEncoder()
+
+one_hot_encoded_type = encoder_type.fit_transform(df_final[['primary_category']]).toarray()
+
+one_hot_df_type = pd.DataFrame(one_hot_encoded_type, columns=encoder_type.get_feature_names_out(['primary_category']))
+
+df_final= df_final.join(one_hot_df_type)
+
+df_final.drop('primary_category', axis=1, inplace=True)
+
+df_final.head()
+~~~
+
+~~~
+df_final.set_index("name", inplace=True)
+df_final
+~~~
+
+~~~
+df_final.columns
+df_final.dropna(inplace=True)
+~~~
+
+~~~
+X = df_final.drop(columns=['Price'])
+X = X.drop(columns = X.columns[:2])
+y = df_final['Price']
+~~~
+
+~~~
+X_train, X_test, y_train, y_test = train_test_split(X,y, test_size=0.2, random_state=42)
+~~~
+
+~~~
+from sklearn.linear_model import LinearRegression
+from sklearn.preprocessing import PolynomialFeatures
+from sklearn.metrics import mean_squared_error
+from sklearn.model_selection import train_test_split
+~~~
+
+~~~
+reg = LinearRegression()
+regmodel = reg.fit(X_train, y_train)
+~~~
+
+~~~
+reg.coef_
+
+yhat_train = reg.predict(X_train)
+yhat_test = reg.predict(X_test)
+
+display(min(yhat_train))
+display(max(yhat_train))
+~~~
+
+~~~
+sns.scatterplot(x = list(range(0,len(regmodel.coef_))), y = regmodel.coef_)
+
+x = list(range(0,len(regmodel.coef_)))
+
+plt.plot(x, regmodel.coef_, color = 'm')
+~~~
+
+~~~
+print('\nMean squared error: %.2f' % mean_squared_error(y_train, yhat_train))
+print('\nMean squared error: %.2f' % mean_squared_error(y_test, yhat_test))
+~~~
+
+~~~
+from sklearn.metrics import classification_report
+from sklearn.linear_model import LinearRegression
+import matplotlib.pyplot as plt
+import operator as operater
+
+print(X.shape)
+print(y.shape)
+
+# Extract the first column of X for scattering
+X_scatter = X.iloc[:, 0]  # Assuming you want to plot against the first feature
+
+plt.scatter(X_scatter, y, s=10)
+
+sort_axis = operater.itemgetter(0)
+# Use X_scatter for sorting as well
+sorted_zip = sorted(zip(X_scatter, y_train), key=sort_axis)
+X_train, y_train = zip(*sorted_zip)
+plt.plot(X_train, y_train, color='m')
+plt.show()
+~~~
+
+~~~
+import matplotlib.pyplot as plt
+import operator as operater
+
+print(X.shape)
+print(y.shape)
+plt.scatter(X_scatter, y, s=10)
+
+sort_axis = operater.itemgetter(0)
+sorted_zip = sorted(zip(X, y_train), key=sort_axis)
+X_train, y_train = zip(*sorted_zip)
+plt.plot(X_train, y_train, color='m')
+plt.show
+~~~
+
+
+
 
 
 ### Model 3: Logistic Regression (Acne product recommender) <a name="model3"></a>
 
+
+
+
 ## Results Section:  <a name="results"></a>
+### Results from the Data Exploration Methods:
+![image](https://github.com/user-attachments/assets/7577bcfa-80e2-4a4c-9695-fa3691e6e12d)
+
+![image](https://github.com/user-attachments/assets/1dd126fc-e3bf-4b6b-8b88-a0d1a9554103)
+
+![image](https://github.com/user-attachments/assets/23f60dc0-ca84-4381-b6d6-bb74735902bd)
+
+![image](https://github.com/user-attachments/assets/ffe7d9dc-0ac8-4bc5-ade1-b7e538b8f531)
+
+![image](https://github.com/user-attachments/assets/68e8ee5e-f01c-4b46-ab92-6620f41cdb2a)
+
+![image](https://github.com/user-attachments/assets/f7e2c367-8edc-4051-83ac-43a0a10e1cb4)
+
+
+### Results from Preprocessing:
+![image](https://github.com/user-attachments/assets/c214f053-bdea-4ab4-be76-321334894f64)
+
+![image](https://github.com/user-attachments/assets/310e398e-53ff-4fc4-84df-b8a68b590558)
+
+![image](https://github.com/user-attachments/assets/4efd0413-30c4-4b64-9e7b-be8b189c46c3)
+
+![image](https://github.com/user-attachments/assets/7353f59a-5cea-436e-bc0f-7ab1e48aa564)
+
+![image](https://github.com/user-attachments/assets/00513194-c211-4d77-b635-0c72c62985d8)
+
+![image](https://github.com/user-attachments/assets/cb5fe713-88f5-4c03-b96b-79ea5e4ff39d)
+
+![image](https://github.com/user-attachments/assets/62abb1c6-78dd-4c50-9e28-67fcb99ec09d)
+
+
+
+
+
+
+
+
+
 
 ## Discussion Section  <a name="discussion"></a>
 
+
+
 ## Conclusion <a name="conclusion"></a>
 
+
+
 ## Statement of Collaboration  <a name="collab"></a>
-Overall, all members contributed to the project, as the project was mostly worked on with multiple people working together at a time. We all joined several zoom meetings together, or met in-person as a team to work on the project. We would share our screen and take turns programming different sections, often with feedback or edits from the others. We brainstormed all the ideas for the project together, bouncing ideas off of and changing ideas based on everybody's feedback. We also took turns going to office hours to discuss with TAs, and sometimes all of us attended together. For the more specific tasks, they are listed below. 
+Overall, all members contributed to the project, as the project was mostly worked on with multiple people working together at a time. We all joined several zoom meetings together, or met in-person as a team to work on the project. We would share our screen and take turns programming different sections, often with feedback or edits from the others. We brainstormed all the ideas for the project together, bouncing ideas off of and changing ideas based on everybody's feedback. We also took turns going to office hours to discuss with TAs, and sometimes all of us attended together. For the more specific tasks, they are listed below alphabetically by last name: 
 
-Evelyn Mares-moreno: Talked to tutors, wrote code for Milestone 4 and updated group members about these changes 
+- Ilia Aballa: Uploaded early datasets, helped organize some meetings/reserve study room, attempted to plot graphs for Milestone 3, completed writeup 
 
-Ilia Aballa: Uploaded early datasets, helped to organize some meetings/reserve study room, completed writeup
+- Kiran Keertipati: Organized many meetings, met with Brian one on one to discuss the project, main screen-sharer for group coding sessions
 
-Kiran Keertipati: Organized many meetings, met with Brian one on one to discuss the project, main screen-sharer for group coding sessions
+- Leena Khattat: Helped with encoding implementation, implemented LogReg model for Milestone 4
 
-Leena Khattat: Helped with encoding implementation, implemented LogReg model for Milestone 4
+- Nicole Li: Created Github Repo, helped write the similarity matrix 
 
-Nicole Li: Created Github Repo, helped write the similarity matrix 
+- Wang Liu: Helped to upload large files to Github and remove unnecessary files, helped write similarity matrix 
 
-Wang Liu: Helped to upload large files to Github and remove unnecessary files, helped write similarity matrix 
+- Evelyn Mares-moreno: Talked to tutors, wrote code for Milestone 4 and updated group members about these changes 
 
-All: Helped clean/organize/understand data, participated in group coding sessions and brainstorming, took turns submitting Milestones on Gradescope, updated the README in some way over the four milestones
+**All:**  Helped clean/organize/understand data, participated in group coding sessions and brainstorming, took turns submitting Milestones on Gradescope, updated the README in some way over the four milestones
 
 -----------------------------------------------------------------------------------------------------------------------------------
-## README Prior to Writeup: ##
+## README Prior to Final Submission Writeup: ##
 
 ## Abstract
 Taking care of one’s skin is essential for both physical and mental wellbeing. Our model aims to create a recommender system that suggests products aligned with users' skincare concerns through a quick survey. We will use explit feedback like reviews from other users to identify suitable skincare products. Using datasets from Ulta and Sephora, we acknowledge potential biases in our model, such as the exclusion of lesser-known products, a focus on products used primarily by Westerners, and a predominance of data representing women or female-identifying individuals. Despite these biases, our ultimate goal is to enhance accessibility and knowledge of skincare for people of all skin types who aspire to improve their skincare routine.
@@ -137,7 +578,7 @@ Our second model uses ratings, like count, brand, and type of the product to pre
 - [Skincare Recommender Notebook](https://github.com/nicoleli04/CSE151A-Project/blob/main/Skincare_Recommender.ipynb)
 - [Skincare Recommender with Two Models](https://github.com/nicoleli04/CSE151A-Project/blob/main/Two_Model_Predictor_Skincare_Recommender.ipynb)
 
-## Group Members
+## Group Members, listed alphabetically by last name
 - Ilia Aballa
 - Kiran Keertipati 
 - Leena Khattat
