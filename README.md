@@ -1,8 +1,9 @@
 # Skincare Recommender System
 
-# MILESTONE 4 NOTEBOOK: #
-
-[MileStone 4 nb](https://colab.research.google.com/drive/1UZuKvfh_-BFqsnquGwFd7OzI7wOTJZH0#scrollTo=MTfIhu3hAh8P)
+## Jupyter Notebooks
+- [Model 1 Notebook](https://github.com/nicoleli04/CSE151A-Project/blob/main/Skincare_Recommender.ipynb)
+- [Model 2 Notebook](https://github.com/nicoleli04/CSE151A-Project/blob/main/Two_Model_Predictor_Skincare_Recommender.ipynb)
+- [MileStone 4: Model 3 & 4 Notebook](https://colab.research.google.com/drive/1UZuKvfh_-BFqsnquGwFd7OzI7wOTJZH0#scrollTo=MTfIhu3hAh8P)
 
 # AWAITING GROUP MEMBER FEEDBACK #
 
@@ -1049,10 +1050,6 @@ Our first model demonstrates the ability to generate recommendations based on th
 
 ## Conclusion (Second Model Updated)
 Our second model uses ratings, like count, brand, and type of the product to predict the price of the product through linear regression. We calculated the mean squared error and found that both the training error and the testing error are quite high. To improve the model, we propose trying polynomial regression to see if it provides a better fit for the data or using perform feature engineering like incorporating interactions between features or adding new relevant parameters to estimate the prices more accurately.
-
-## Jupyter Notebooks
-- [Skincare Recommender Notebook](https://github.com/nicoleli04/CSE151A-Project/blob/main/Skincare_Recommender.ipynb)
-- [Skincare Recommender with Two Models](https://github.com/nicoleli04/CSE151A-Project/blob/main/Two_Model_Predictor_Skincare_Recommender.ipynb)
 
 ## Group Members, listed alphabetically by last name
 - Ilia Aballa
