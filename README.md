@@ -488,6 +488,10 @@ plt.show
 
 ![image](https://github.com/user-attachments/assets/4efd0413-30c4-4b64-9e7b-be8b189c46c3)
 
+![image](https://github.com/user-attachments/assets/b28e3dbc-2784-4989-9e13-0914aa728b82)
+
+
+
 ![image](https://github.com/user-attachments/assets/7353f59a-5cea-436e-bc0f-7ab1e48aa564)
 
 ![image](https://github.com/user-attachments/assets/00513194-c211-4d77-b635-0c72c62985d8)
