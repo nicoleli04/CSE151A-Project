@@ -4,7 +4,7 @@
 
 [MileStone 4 nb](https://colab.research.google.com/drive/1UZuKvfh_-BFqsnquGwFd7OzI7wOTJZH0#scrollTo=MTfIhu3hAh8P)
 
-# WORK IN PROGRESS #
+# AWAITING GROUP MEMBER FEEDBACK #
 
 # Writeup Table of Contents:
 1. [Introduction](#introduction)
@@ -28,18 +28,9 @@
 14. [Statement of Collaboration](#collab)
 
 ## Introduction: <a name="introduction"></a>
-Taking care of one’s skin is essential for both physical and mental wellbeing, however finding the right skincare products can be challenging given the large variety available. Products differ in many categories such as ingredients, purpose, and price. Along with that, their effectiveness is subjective, as it is dependent on the user's own skin type and allergens. The goal of our project is to address this challenge by creating a recommendation system that suggests skincare products based on user concerns and preferences. 
+Taking care of one’s skin is essential for both physical and mental wellbeing, however finding the right skincare products can be challenging given the large variety of products available. Products differ in many categories such as ingredients, purpose, and price. Along with that, their effectiveness is subjective, as it is dependent on the user's own skin type and allergens. The goal of our project is to address this challenge by creating a recommendation system that suggests skincare products based on user concerns and preferences.
 
-This project also aims to predict product prices and customer reviews, providing valuable insights into the cost dynamics of the skincare market. 
-
-
-This project is particularly interesting because it combines elements of machine learning with skincare. By leveraging datasets from well-know beuaty retailers and by focussing on recommendations, this project has the potential to make skincare advice more accessible and personalized. Overall the broader impact of this project includes the personilzation of skincare, increased accessibility and economic insights.
-
-
-Prior to our first group meeting, all members were responsible for thinking of an idea and finding datasets that might be useful for that idea. A group member came up with an idea to create a Skincare related project, and the rest of the group was interested in moving forward with the idea. The datasets the member found were presented and seemed promising, as they (at the time) seemed large enough to work with, containing columns detailing brand, product name, price, reviews, country of origin, and other information related to the product. Doing a topic on Skincare seemed like a unique topic that our members were interested in working with, and we were leaning towards creating a recommendation system that presented products based on a user's response to a survey, where we'd ask them for things like skin type, ingredients, allergens, and specific skin issues that they would want to address like dryness, acne, and so on. In our minds, we were to make a model that was meant to predict what product would be the best for our user to use. 
-
-We were unsure of what exact model we would want to use, as a recommendation system was not yet covered in the class, and we realized that we would have to do individual research and attend office hours to get a better grasp of how to approach the project. At office hours, Professor Solares told us that we would have to find a way to vectorize our data, and emphasized the importance of reviews in our process. 
-
+This project is particularly interesting because it combines elements of machine learning with skincare. By leveraging datasets from well-know beauty retailers and by focusing on recommendations, this project has the potential to make skincare advice more accessible and personalized. Overall the broader impact of this project includes the personilzation of skincare, increased accessibility and economic insights.
 
 ## Figures: <a name="figures"></a>
 Here is the first figure that we used to help understand how our model should work, from [this Kaggle notebook](https://www.kaggle.com/code/dyahnurlita/skincare-recommendation-system-using-cf-method). We found it because we were searching for similar notebooks as we did not want to accidentally copy someone else's work. While this user also implemented a recommendation system, theirs is different from ours as they use reviews and rating as the main method for recommending a product, while ours is different, focusing instead on other things like ingredients and use of the product. This graphic was helpful in developing our understanding of the reviews based recommendation system. 
@@ -977,13 +968,19 @@ This model seemed to produce a much better scatterplot than our previous models,
 
 
 ### Model 4 Discussion
+In our fourth model, we wanted an implementation that was a neural network, and to also address our shortcomings in Milestone 3. It is a Sequential Neural Network with 4 hidden layers. The input and hidden layers use a ‘relu’ activation function while the output uses a ‘sigmoid’ so that the output can be binary. We then run it with 10 epochs, with a batch size of 10.
 
+We then plot the history of the model, to keep an eye on our loss as the epochs are run, and we reach a very very low loss at around 2 epochs. We also create a y_test_prediction, and print out a classification report. The classification report seems to be at a good accuracy, seeing as it is at 97%.
+
+To improve on this model, we could have tried out other configurations of hidden layers and activation functions, further tweaking and improving its overall performance. We could have also tried to test it further by including more 'noise' to the data that the model would have to sort through. 
 
 
 ## Conclusion <a name="conclusion"></a>
+In conclusion, overall this project was a great learning experience for our group, as we were forced to work with multiple types of models causing us to work with unique concepts, even those that were not covered explicitly in class (NearestNeighbors, similarity matrices when it was only week 2, e.t.c.). However, I (Ilia) believe that a big issue with our project was scope. Our initial idea was a very appealing one, but because our datasets were not of the best quality, this made it difficult for us as the project went on. There was a lot of cleaning and preprocessing to complete, forcing us to spend less time on implementation of the models themselves, leading to many errors, issues, and gaps in knowledge that could not be filled within the Milestone deadlines. 
 
+However, since we have been able to work with this idea, these models, and these datasets for so long, as a group we can now continue on and further build onto this project. One of the things we discussed previously was developing some type of website, where users can input products that they currently use, skin issues they’d like to solve (dryness, acne, blackheads, e.t.c), and allergens and we can use the models we’ve worked on (after tweaking and refining) to recommend products. We were also hoping to include the price, overall rating, and places the user may be able to buy said products after presenting them. 
 
-
+In order to do this, however, we would have to spend more research finding better datasets. This project has potential to continue, and fills the need for an easy, simple, and accessible way for people to get into skincare. 
 
 
 ## Statement of Collaboration  <a name="collab"></a>
@@ -1004,7 +1001,7 @@ Overall, all members contributed to the project, as the project was mostly worke
 **All:**  Helped clean/organize/understand data, participated in group coding sessions and brainstorming, took turns submitting Milestones on Gradescope, updated the README in some way over the four milestones
 
 -----------------------------------------------------------------------------------------------------------------------------------
-## README Prior to Final Submission Writeup: ##
+## README Prior to Final Submission Writeup:
 
 ## Abstract
 Taking care of one’s skin is essential for both physical and mental wellbeing. Our model aims to create a recommender system that suggests products aligned with users' skincare concerns through a quick survey. We will use explit feedback like reviews from other users to identify suitable skincare products. Using datasets from Ulta and Sephora, we acknowledge potential biases in our model, such as the exclusion of lesser-known products, a focus on products used primarily by Westerners, and a predominance of data representing women or female-identifying individuals. Despite these biases, our ultimate goal is to enhance accessibility and knowledge of skincare for people of all skin types who aspire to improve their skincare routine.
