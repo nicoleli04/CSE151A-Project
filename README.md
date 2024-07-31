@@ -4,7 +4,18 @@
 [MileStone 4 nb](https://colab.research.google.com/drive/1UZuKvfh_-BFqsnquGwFd7OzI7wOTJZH0#scrollTo=MTfIhu3hAh8P)
 
 ## Introduction:
-Taking care of one’s skin is essential for both physical and mental wellbeing, however finding the right skincare products can be challenging given the sheer variety available and the subjective nature of product effectivenes. The goal of our project is the address this challenge by creating a recommender system that suggests skincare products based on user concerns and preferences. Additionly, this projects aims to predict product prices and customer reviews, providing valuable insights into the cost dynamics of the skincare market. This project is particularly interesting because it combines elements of machine learning with skincare. By leveraging datasets from well-know beuaty retailers and by focussing on recommendations, this project has the potential to make skincare advice more accessible and personalized. Overall the broader impact of this project includes the personilzation of skincare, increased accessibility and economic insights.
+Taking care of one’s skin is essential for both physical and mental wellbeing, however finding the right skincare products can be challenging given the large variety available. Products differ in many categories such as ingredients, purpose, and price. Along with that, their effectiveness is subjective, as it is dependent on the user's own skin type and allergens. The goal of our project is to address this challenge by creating a recommendation system that suggests skincare products based on user concerns and preferences. 
+
+This project also aims to predict product prices and customer reviews, providing valuable insights into the cost dynamics of the skincare market. 
+
+
+This project is particularly interesting because it combines elements of machine learning with skincare. By leveraging datasets from well-know beuaty retailers and by focussing on recommendations, this project has the potential to make skincare advice more accessible and personalized. Overall the broader impact of this project includes the personilzation of skincare, increased accessibility and economic insights.
+
+
+Prior to our first group meeting, all members were responsible for thinking of an idea and finding datasets that might be useful for that idea. A group member came up with an idea to create a Skincare related project, and the rest of the group was interested in moving forward with the idea. The datasets the member found were presented and seemed promising, as they (at the time) seemed large enough to work with, containing columns detailing brand, product name, price, reviews, country of origin, and other information related to the product. Doing a topic on Skincare seemed like a unique topic that our members were interested in working with, and we were leaning towards creating a recommendation system that presented products based on a user's response to a survey, where we'd ask them for things like skin type, ingredients, allergens, and specific skin issues that they would want to address like dryness, acne, and so on. In our minds, we were to make a model that was meant to predict what product would be the best for our user to use. 
+
+We were unsure of what exact model we would want to use, as a recommendation system was not yet covered in the class, and we realized that we would have to do individual research and attend office hours to get a better grasp of how to approach the project. At office hours, Professor Solares told us that we would have to find a way to vectorize our data, and emphasized the importance of reviews in our process. 
+
 
 ## Figures:
 
