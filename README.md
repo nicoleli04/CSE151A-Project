@@ -3,6 +3,8 @@
 #MILESTONE 4 NOTEBOOK:#
 [MileStone 4 nb](https://colab.research.google.com/drive/1UZuKvfh_-BFqsnquGwFd7OzI7wOTJZH0#scrollTo=MTfIhu3hAh8P)
 
+# WORK IN PROGRESS #
+
 ## Introduction:
 Taking care of one’s skin is essential for both physical and mental wellbeing, however finding the right skincare products can be challenging given the large variety available. Products differ in many categories such as ingredients, purpose, and price. Along with that, their effectiveness is subjective, as it is dependent on the user's own skin type and allergens. The goal of our project is to address this challenge by creating a recommendation system that suggests skincare products based on user concerns and preferences. 
 
