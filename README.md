@@ -5,8 +5,6 @@
 - [Model 2 Notebook](https://github.com/nicoleli04/CSE151A-Project/blob/main/Two_Model_Predictor_Skincare_Recommender.ipynb)
 - [MileStone 4: Model 3 & 4 Notebook](https://colab.research.google.com/drive/1UZuKvfh_-BFqsnquGwFd7OzI7wOTJZH0#scrollTo=MTfIhu3hAh8P)
 
-# AWAITING GROUP MEMBER FEEDBACK #
-
 # Writeup Table of Contents:
 1. [Introduction](#introduction)
 2. [Figures](#figures)
