@@ -5,7 +5,21 @@
 
 # WORK IN PROGRESS #
 
-## Introduction:
+# Table of Contents:
+1. [Introduction](#introduction)
+2. Figures
+3. Methods Section
+4. Data Exploration
+5. Preprocessing
+6. Model 1: Recommendation System
+7. Model 2: Linear Regression (Price and Reviews)
+8. Logistic Regression (Acne Product Recommender)
+9. Results Section
+10. Discussion Section
+11. Conclucsion
+12. Statement of Collaboration
+
+## Introduction: <a name="introduction"></a>
 Taking care of one’s skin is essential for both physical and mental wellbeing, however finding the right skincare products can be challenging given the large variety available. Products differ in many categories such as ingredients, purpose, and price. Along with that, their effectiveness is subjective, as it is dependent on the user's own skin type and allergens. The goal of our project is to address this challenge by creating a recommendation system that suggests skincare products based on user concerns and preferences. 
 
 This project also aims to predict product prices and customer reviews, providing valuable insights into the cost dynamics of the skincare market. 
@@ -18,8 +32,9 @@ Prior to our first group meeting, all members were responsible for thinking of a
 
 We were unsure of what exact model we would want to use, as a recommendation system was not yet covered in the class, and we realized that we would have to do individual research and attend office hours to get a better grasp of how to approach the project. At office hours, Professor Solares told us that we would have to find a way to vectorize our data, and emphasized the importance of reviews in our process. 
 
-
+----------------------------------------------------------------------------------------------------------------------
 ## Figures:
+
 Below is a figure that shows a tree with the different types of Recommender Systems, from the research paper [A systematic review and research perspective on recommender systems](https://journalofbigdata.springeropen.com/articles/10.1186/s40537-022-00592-5)
 
 ![image](https://github.com/user-attachments/assets/03af8f99-80ee-41e8-a8c8-b13b49d76752)
@@ -60,7 +75,7 @@ Here is another figure that we used to help understand how our model should work
 ## Statement of Collaboration
 Overall, all members contributed to the project, as the project was mostly worked on with multiple people working together at a time. We all joined several zoom meetings together, or met in-person as a team to work on the project. We would share our screen and take turns programming different sections, often with feedback or edits from the others. We brainstormed all the ideas for the project together, bouncing ideas off of and changing ideas based on everybody's feedback. We also took turns going to office hours to discuss with TAs, and sometimes all of us attended together. For the more specific tasks, they are listed below. 
 
-Evelyn Mares-moreno: Updated Milestone 4 notebook,   
+Evelyn Mares-moreno: Talked to tutors, wrote code for Milestone 4 and updated group members about these changes 
 
 Ilia Aballa: Uploaded early datasets, helped to organize some meetings/reserve study room, completed writeup
 
@@ -72,7 +87,7 @@ Nicole Li: Created Github Repo, helped write the similarity matrix
 
 Wang Liu: Helped to upload large files to Github and remove unnecessary files, helped write similarity matrix 
 
-All: Helped clean/organize/understand data, participated in group coding sessions, took turns submitting Milestones on Gradescope, updated the README in some way over the four milestones
+All: Helped clean/organize/understand data, participated in group coding sessions and brainstorming, took turns submitting Milestones on Gradescope, updated the README in some way over the four milestones
 
 
 ## Abstract
