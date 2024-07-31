@@ -482,21 +482,13 @@ plt.show
 
 
 ### Results from Preprocessing:
-
-#### Section 1 results: 
 ![image](https://github.com/user-attachments/assets/c214f053-bdea-4ab4-be76-321334894f64)
 
 ![image](https://github.com/user-attachments/assets/310e398e-53ff-4fc4-84df-b8a68b590558)
 
 ![image](https://github.com/user-attachments/assets/4efd0413-30c4-4b64-9e7b-be8b189c46c3)
 
-
-
-#### Section 2 results:
-
 ![image](https://github.com/user-attachments/assets/b28e3dbc-2784-4989-9e13-0914aa728b82)
-
-
 
 ![image](https://github.com/user-attachments/assets/7353f59a-5cea-436e-bc0f-7ab1e48aa564)
 
@@ -504,8 +496,64 @@ plt.show
 
 ![image](https://github.com/user-attachments/assets/cb5fe713-88f5-4c03-b96b-79ea5e4ff39d)
 
-![image](https://github.com/user-attachments/assets/62abb1c6-78dd-4c50-9e28-67fcb99ec09d)
+![image](https://github.com/user-attachments/assets/965f8287-76ea-4bb7-9630-19db7d2e6fde)
 
+![image](https://github.com/user-attachments/assets/8938745f-9b74-442b-99a0-12228d35a005)
+
+![image](https://github.com/user-attachments/assets/9066d5e7-e22f-4795-b25f-97da1d318d47)
+
+![image](https://github.com/user-attachments/assets/2261bbb6-34cc-48ce-b4a9-f02078a6b815)
+
+![image](https://github.com/user-attachments/assets/7670232d-e205-4287-94a3-86b3d8f9e663)
+
+![image](https://github.com/user-attachments/assets/3e323763-5960-40f3-ab83-d8dbdf1f2fa6)
+
+![image](https://github.com/user-attachments/assets/10ea3bff-d298-4a33-b63f-d68ac83af7cc)
+
+![image](https://github.com/user-attachments/assets/5c61a969-cd19-4b3e-9044-67e04fb64d6d)
+
+![image](https://github.com/user-attachments/assets/1fca022d-1688-4e26-96f9-00d0aaa1110b)
+
+![image](https://github.com/user-attachments/assets/f2bdab60-6297-4076-ac26-56f16929e217)
+
+![image](https://github.com/user-attachments/assets/0a8063b8-904c-4e6b-908f-1a14d680964e)
+
+![image](https://github.com/user-attachments/assets/45d8357b-7e0c-4689-83f8-c9d987b7b1d2)
+
+### Results from Model 1
+![image](https://github.com/user-attachments/assets/70d80747-417d-401f-92c3-9e82e9e22828)
+
+![image](https://github.com/user-attachments/assets/422f1074-e2dd-4302-b732-0de66d6a1778)
+
+![image](https://github.com/user-attachments/assets/6bdff7ff-0047-47ac-a2ba-0625c26a207a)
+
+![image](https://github.com/user-attachments/assets/706e3395-9598-4fc9-90ea-d6915fabde1a)
+
+### Results from Model 2
+#### Results from Linear Regression on Price: 
+![image](https://github.com/user-attachments/assets/4e0f9ac6-f88d-474a-8676-ec6b32bc2436)
+
+![image](https://github.com/user-attachments/assets/35271b08-4939-4273-bbeb-3994d1147acf)
+
+![image](https://github.com/user-attachments/assets/f5d2fc20-8cfa-4747-b4b7-da106e21f036)
+
+#### Results from Linear Regression on Rating: 
+![image](https://github.com/user-attachments/assets/e059d0aa-1bce-4a01-ace8-ab7c1a31c070)
+
+![image](https://github.com/user-attachments/assets/1af4535b-018c-4378-9cbb-6c5ff3f2a40f)
+
+![image](https://github.com/user-attachments/assets/ab83aa29-578f-4c3b-8184-7228afd1f3d4)
+
+![image](https://github.com/user-attachments/assets/91309e96-dd49-495a-bf3a-564234271877)
+
+![image](https://github.com/user-attachments/assets/e11950f8-3a52-40c1-9505-0243f7949396)
+
+![image](https://github.com/user-attachments/assets/611de3ab-b4e1-4a7f-8f16-754125b29ac1)
+
+![image](https://github.com/user-attachments/assets/f16a7caa-8209-4ac7-89c7-7ba99c2b4c5a)
+
+
+### Results from Model 3
 
 
 
