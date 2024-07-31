@@ -534,7 +534,7 @@ Overall, all members contributed to the project, as the project was mostly worke
 
 - Nicole Li: Created Github Repo, helped write the similarity matrix 
 
-- Wang Liu: Helped to upload large files to Github and remove unnecessary files, helped write similarity matrix 
+- Wang Liu: Developed the similarity-based dataset merging process, contributed to the acne prediction task.
 
 - Evelyn Mares-moreno: Talked to tutors, wrote code for Milestone 4 and updated group members about these changes 
 
