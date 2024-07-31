@@ -10,16 +10,22 @@
 1. [Introduction](#introduction)
 2. [Figures](#figures)
 3. [Methods Section](#methods)
-4. [Data Exploration](#data)
-5. [Preprocessing](#preprocessing)
-6. [Model 1: Recommendation System](#model1)
-7. [Model 2: Linear Regression (Price and Reviews)](#model2)
-8. [Model 3: Logistic Regression (Acne Product Recommender)](#model3)
-9. [Model 4: Neural Network (Acne Product Recommender](#model4)
+   1. [Data Exploration](#data)
+   2. [Preprocessing](#preprocessing)
+   3. [Model 1: Recommendation System](#model1)
+   4. [Model 2: Linear Regression (Price and Reviews)](#model2)
+   5. [Model 3: Logistic Regression (Acne Product Recommender)](#model3)
+   6. [Model 4: Neural Network (Acne Product Recommender](#model4)
 10. [Results Section](#results)
-11. [Discussion Section](#discussion)
-12. [Conclucsion](#conclusion)
-13. [Statement of Collaboration](#collab)
+    1. [Data Exploration](#data2)
+    2. [Preprocessing](#preprocessing2)
+    3. [Model 1: Recommendation System](#model12)
+    4. [Model 2: Linear Regression (Price and Reviews)](#model22)
+    5. [Model 3: Logistic Regression (Acne Product Recommender)](#model32)
+    6. [Model 4: Neural Network (Acne Product Recommender](#model42)
+12. [Discussion Section](#discussion)
+13. [Conclucsion](#conclusion)
+14. [Statement of Collaboration](#collab)
 
 ## Introduction: <a name="introduction"></a>
 Taking care of one’s skin is essential for both physical and mental wellbeing, however finding the right skincare products can be challenging given the large variety available. Products differ in many categories such as ingredients, purpose, and price. Along with that, their effectiveness is subjective, as it is dependent on the user's own skin type and allergens. The goal of our project is to address this challenge by creating a recommendation system that suggests skincare products based on user concerns and preferences. 
@@ -674,165 +680,285 @@ print(classification_report(y_test, y_test_pred))
 ## Results Section:  <a name="results"></a>
 **Results include input in the screenshot, so that the reader can understand what line actually produced the following results.**
 
-### Results from the Data Exploration Methods:
+### Results from the Data Exploration Methods: <a name="data2"></a>
 Data Exp 1: 
+
 ![image](https://github.com/user-attachments/assets/7577bcfa-80e2-4a4c-9695-fa3691e6e12d)
 
+
 Data Exp 2: 
+
 ![image](https://github.com/user-attachments/assets/1dd126fc-e3bf-4b6b-8b88-a0d1a9554103)
 
+
 Data Exp 3: 
+
 ![image](https://github.com/user-attachments/assets/23f60dc0-ca84-4381-b6d6-bb74735902bd)
 
+
 Data Exp 4: 
+
 ![image](https://github.com/user-attachments/assets/ffe7d9dc-0ac8-4bc5-ade1-b7e538b8f531)
 
+
 Data Exp 5: 
+
 ![image](https://github.com/user-attachments/assets/68e8ee5e-f01c-4b46-ab92-6620f41cdb2a)
 
+
 Data Exp 6: 
+
 ![image](https://github.com/user-attachments/assets/f7e2c367-8edc-4051-83ac-43a0a10e1cb4)
 
 
-### Results from Preprocessing:
+
+### Results from Preprocessing: <a name="preprocessing2"></a>
 PP 1:
+
 ![image](https://github.com/user-attachments/assets/c214f053-bdea-4ab4-be76-321334894f64)
 
+
 PP 2:
+
 ![image](https://github.com/user-attachments/assets/310e398e-53ff-4fc4-84df-b8a68b590558)
 
+
 PP 3:
+
 ![image](https://github.com/user-attachments/assets/4efd0413-30c4-4b64-9e7b-be8b189c46c3)
 
+
 PP 4:
+
 ![image](https://github.com/user-attachments/assets/b28e3dbc-2784-4989-9e13-0914aa728b82)
 
+
 PP 5:
+
 ![image](https://github.com/user-attachments/assets/7353f59a-5cea-436e-bc0f-7ab1e48aa564)
 
+
 PP 6:
+
 ![image](https://github.com/user-attachments/assets/00513194-c211-4d77-b635-0c72c62985d8)
 
+
 PP 7:
+
 ![image](https://github.com/user-attachments/assets/cb5fe713-88f5-4c03-b96b-79ea5e4ff39d)
 
+
 PP 8:
+
 ![image](https://github.com/user-attachments/assets/965f8287-76ea-4bb7-9630-19db7d2e6fde)
 
+
 PP 9:
+
 ![image](https://github.com/user-attachments/assets/8938745f-9b74-442b-99a0-12228d35a005)
 
+
 PP 10:
+
 ![image](https://github.com/user-attachments/assets/9066d5e7-e22f-4795-b25f-97da1d318d47)
 
+
 PP 11:
+
 ![image](https://github.com/user-attachments/assets/2261bbb6-34cc-48ce-b4a9-f02078a6b815)
 
+
 PP 12:
+
 ![image](https://github.com/user-attachments/assets/7670232d-e205-4287-94a3-86b3d8f9e663)
 
+
 PP 13:
+
 ![image](https://github.com/user-attachments/assets/3e323763-5960-40f3-ab83-d8dbdf1f2fa6)
 
+
 PP 14:
+
 ![image](https://github.com/user-attachments/assets/10ea3bff-d298-4a33-b63f-d68ac83af7cc)
 
+
 PP 15:
+
 ![image](https://github.com/user-attachments/assets/5c61a969-cd19-4b3e-9044-67e04fb64d6d)
 
+
 PP 16:
+
 ![image](https://github.com/user-attachments/assets/1fca022d-1688-4e26-96f9-00d0aaa1110b)
 
+
 PP 17:
+
 ![image](https://github.com/user-attachments/assets/f2bdab60-6297-4076-ac26-56f16929e217)
 
+
 PP 18:
+
 ![image](https://github.com/user-attachments/assets/0a8063b8-904c-4e6b-908f-1a14d680964e)
 
+
 PP 19:
+
 ![image](https://github.com/user-attachments/assets/45d8357b-7e0c-4689-83f8-c9d987b7b1d2)
 
-### Results from Model 1
+
+### Results from Model 1 <a name="model12"></a>
 Model1 1:
+
 ![image](https://github.com/user-attachments/assets/70d80747-417d-401f-92c3-9e82e9e22828)
 
+
 Model1 2:
+
 ![image](https://github.com/user-attachments/assets/422f1074-e2dd-4302-b732-0de66d6a1778)
 
+
 Model1 3:
+
 ![image](https://github.com/user-attachments/assets/6bdff7ff-0047-47ac-a2ba-0625c26a207a)
 
+
 Model1 4:
+
 ![image](https://github.com/user-attachments/assets/706e3395-9598-4fc9-90ea-d6915fabde1a)
 
-### Results from Model 2
+
+### Results from Model 2 <a name="model22"></a>
 #### Results from Linear Regression on Price: 
+
 LinRegPrice 1:
+
 ![image](https://github.com/user-attachments/assets/4e0f9ac6-f88d-474a-8676-ec6b32bc2436)
 
+
 LinRegPrice 2:
+
 ![image](https://github.com/user-attachments/assets/35271b08-4939-4273-bbeb-3994d1147acf)
 
+
 LinRegPrice 3:
+
 ![image](https://github.com/user-attachments/assets/f5d2fc20-8cfa-4747-b4b7-da106e21f036)
+
 
 #### Results from Linear Regression on Rating: 
 LinRegRat 1:
+
 ![image](https://github.com/user-attachments/assets/e059d0aa-1bce-4a01-ace8-ab7c1a31c070)
 
+
 LinRegRat 2:
+
 ![image](https://github.com/user-attachments/assets/1af4535b-018c-4378-9cbb-6c5ff3f2a40f)
 
+
 LinRegRat 3:
+
 ![image](https://github.com/user-attachments/assets/ab83aa29-578f-4c3b-8184-7228afd1f3d4)
 
+
 LinRegRat 4:
+
 ![image](https://github.com/user-attachments/assets/91309e96-dd49-495a-bf3a-564234271877)
 
+
 LinRegRat 5:
+
 ![image](https://github.com/user-attachments/assets/e11950f8-3a52-40c1-9505-0243f7949396)
 
+
 LinRegRat 6:
+
 ![image](https://github.com/user-attachments/assets/611de3ab-b4e1-4a7f-8f16-754125b29ac1)
 
+
 LinRegRat 7:
+
 ![image](https://github.com/user-attachments/assets/f16a7caa-8209-4ac7-89c7-7ba99c2b4c5a)
 
 
-### Results from Model 3
+
+### Results from Model 3 <a name="model32"></a>
 LogReg 1:
+
 ![image](https://github.com/user-attachments/assets/887657be-8ca8-4d3e-a027-be00062a2604)
 
+
 LogReg 2:
+
 ![image](https://github.com/user-attachments/assets/0d1a7d0f-f47d-4a9f-a4a2-677b0c2e1744)
 
+
 LogReg 3:
+
 ![image](https://github.com/user-attachments/assets/2ab4887b-f0e2-456e-b4d4-044561e6db63)
 
+
 LogReg 4:
+
 ![image](https://github.com/user-attachments/assets/04b8011c-d5aa-4de6-9cad-15e5ea7ba366)
 
+
 LogReg 5:
+
 ![image](https://github.com/user-attachments/assets/648a2b4c-8960-427b-be49-25da1eacb074)
 
 
-### Results from Model 4
+
+### Results from Model 4 <a name="model42"></a>
 NN 1:
+
 ![image](https://github.com/user-attachments/assets/4c13e0fa-8527-4a46-a5cc-29eb849ceee7)
 
+
 NN 2:
+
 ![image](https://github.com/user-attachments/assets/903f146e-6fad-490e-8294-a0f2072cf089)
 
-NN 3:
-![image](https://github.com/user-attachments/assets/d199057e-caa3-40ef-81f4-e23bdaee1afa)
 
+NN 3:
+
+![image](https://github.com/user-attachments/assets/d199057e-caa3-40ef-81f4-e23bdaee1afa)
 
 
 ## Discussion Section  <a name="discussion"></a>
 
+### Data Exploration Discussion
+In our data exploration, we were simply trying to understand our data better, leading to a lot of viewing the previews of our sephora, indonesia, and skinsort dataframes. We also wanted to see how many prices were listed as 0, and wanted to understand what effects each of the products had by reviewing the “afteruse” column. 
+
+In our exploration, we would have improved by taking a deeper look into our data, and taking the discrepancies more seriously. There were some datasets that had ratings while others didn’t, and we didn’t anticipate how long it would actually take to properly merge these datasets. We also would have improved by trying harder to plot our data, in order to see if the columns are actually that related to one another. 
+
+### Preprocessing Discussion
+In our preprocessing step, we started out with a pairplot in order to visualize the data better, starting off with Country. This was not entirely helpful, so we decided to move on to dropping all our null values to clean up our datasets. We then used the describe and info functions to better see what is happening in our data. We then realized that many of the columns were not named in the exact same way, so we changed these names so that merging the datasets later would be much easier. 
+
+We also used a similarity matrix in an attempt to match reviews to certain products based on how similar they are in product name on reviews, and we also wanted to attach all of the reviews to the product. 
+
+Other preprocessing methods included checking the shape of our data, trying to locate where our null values are, and using value_counts() to see how many instances of each entry we have. 
+
+In hindsight, using the similarity matrix to try to “force” products with reviews might not have been the best decision, as in order for our model to work, we had to give a pretty lax threshold for similarity, causing dissimilar products to be matched with each other. It’s possible that we could have put in more effort in researching other methods to merge our datasets together. 
+
+### Model 1 Discussion
+
+
+### Model 2 Discussion
+
+
+### Model 3 Discussion
+
+
+### Model 4 Discussion
+
 
 
 ## Conclusion <a name="conclusion"></a>
+
+
 
 
 
