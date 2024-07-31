@@ -941,7 +941,7 @@ We also used a similarity matrix in an attempt to match reviews to certain produ
 
 Other preprocessing methods included checking the shape of our data, trying to locate where our null values are, and using value_counts() to see how many instances of each entry we have. 
 
-In hindsight, using the similarity matrix to try to “force” products with reviews might not have been the best decision, as in order for our model to work, we had to give a pretty lax threshold for similarity, causing dissimilar products to be matched with each other. It’s possible that we could have put in more effort in researching other methods to merge our datasets together. 
+In hindsight, using the similarity matrix to try to “force” products with reviews might not have been the best decision, as in order for our model to work, we had to give a pretty lax threshold for similarity, causing dissimilar products to be matched with each other. It’s possible that we could have tried researching other methods to merge our datasets together that would have yielded products that were more similar to one another.
 
 ### Model 1 Discussion
 
