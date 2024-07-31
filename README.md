@@ -920,10 +920,16 @@ NN 3:
 
 ## Discussion Section  <a name="discussion"></a>
 
+- add in why things happened the way they did
+- the how and why of it
+
+
 ### Data Exploration Discussion
 In our data exploration, we were simply trying to understand our data better, leading to a lot of viewing the previews of our sephora, indonesia, and skinsort dataframes. We also wanted to see how many prices were listed as 0, and wanted to understand what effects each of the products had by reviewing the “afteruse” column. 
 
-In our exploration, we would have improved by taking a deeper look into our data, and taking the discrepancies more seriously. There were some datasets that had ratings while others didn’t, and we didn’t anticipate how long it would actually take to properly merge these datasets. We also would have improved by trying harder to plot our data, in order to see if the columns are actually that related to one another. 
+Based on our results, it seemed like we would have to convert the prices listed in our indonesia dataframe to USD, would have to separate out the results column so that we can isolate effects of the products, and find a way to encode all of our noninteger values such as brand, product type, and afteruse effects of the product.
+
+In our exploration, we would have improved by taking a deeper look into our data, and taking the discrepancies more seriously. There were some datasets that had ratings while others didn’t, and we didn’t anticipate how long it would actually take to properly merge these datasets. We also would have improved by trying harder to plot our data, in order to see if the columns are actually that related to one another.
 
 ### Preprocessing Discussion
 In our preprocessing step, we started out with a pairplot in order to visualize the data better, starting off with Country. This was not entirely helpful, so we decided to move on to dropping all our null values to clean up our datasets. We then used the describe and info functions to better see what is happening in our data. We then realized that many of the columns were not named in the exact same way, so we changed these names so that merging the datasets later would be much easier. 
