@@ -944,12 +944,30 @@ Other preprocessing methods included checking the shape of our data, trying to l
 In hindsight, using the similarity matrix to try to “force” products with reviews might not have been the best decision, as in order for our model to work, we had to give a pretty lax threshold for similarity, causing dissimilar products to be matched with each other. It’s possible that we could have tried researching other methods to merge our datasets together that would have yielded products that were more similar to one another.
 
 ### Model 1 Discussion
+In our first model, we used a NearestNeighbors model with a cosine metric, and tried to configure it so that it would recommend 5 products with a similar name to a product fed into the recommender. We fit it to our encoded dataframe where the column ‘Name’ was dropped, trying to utilize the indices of the different products so that we could print them out, and so that we would be working with an easier datatype. 
 
+The first large chunk of code presented the information in a difficult way to read, so the second chunk of code presents the results in a more readable way. The second way showcases nearly all of the columns, but some information like product type is truncated when viewed in Google Colab. Here, we can see the first 3-5 ingredients of each product, allowing for us to “hand-check” the similarity further. 
+
+Reflecting back on model 1, it would have been good to implement some sort of extra and automated check that runs through the ingredients of the products recommended, to see if they are similar in this way that doesn’t require us to check it by hand. By using only name as the criteria, it is a much looser requirement than something like the ingredients. By combining both, we might have been able to create a better model. We also only ran the model on the first index, 0, and didn’t try it out on other products. Testing it out on more products would have been beneficial as well. 
 
 ### Model 2 Discussion
+In our second model, we used Linear Regression to check similarity based on Price and Reviews/Rating.
+
+For our Price based model, we encoded the product type, dropped the column containing price, split our data into an 80-20 split, and created and fit our model to our X and y train values. We then printed out the coefficients, predicted our yhats, and tried to plot our values. We also printed out the MSE for our yhats.
+
+At this point in time, we were unsure how to properly plot our Linear Regression model. In the results, you will see that the graph is one that is severely overfitted. In the second plot, you see that the scatter plot is heavily concentrated on both ends of the x-axis, so the resulting fitting curve also looks a bit strange. In the third plot, it looks like we tried to cram too many values onto the x-axis, causing the scatter plot to populate only the first two values. This seems like an issue with the creation of the plot, and the fitting curve also looks strange and does not match the data.
+
+For our Reviews/Rating based model, we dropped the column with ratings, but did not have to encode the ratings since they were already in a numerical form. We split into a 80-20 split, predicting yhats like above, printing MSEs with more attempts to plot the values. 
+
+Similar to the Price based model, you will see that the first scatterplot is also overfit, and that the second scatter plot, while visually better than the previous one, still has a fitting curve that does not quite match the dots. However, different from the Price based model, we generated a heatmap and found that many of the values were negatively correlated. 
+At results underneath “LinRegRat 7,”  we try to create a polynomial model, but this model actually ended up unfinished. 
+In hindsight, we could have visited office hours more as a group, trying to work with our teaching staff to try to solve these plotting problems. We were unsure what was causing these plotting issues, and would have benefited greatly from utilizing office hours more as we reached the Milestone deadline. We also could have spent more time finishing the polynomial model, as it could have yielded much better results.
+
+We did not end up continuing with this version of the project, as after we visited office hours, we were told the method that we were using was not actually the best way to implement the idea, and were encouraged to pivot and change our idea to instead be able to predict if a product is acne fighting rather than being able to recommend a list of products. 
 
 
 ### Model 3 Discussion
+
 
 
 ### Model 4 Discussion
