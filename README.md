@@ -14,11 +14,12 @@
 5. [Preprocessing](#preprocessing)
 6. [Model 1: Recommendation System](#model1)
 7. [Model 2: Linear Regression (Price and Reviews)](#model2)
-8. [Logistic Regression (Acne Product Recommender)](#model3)
-9. [Results Section](#results)
-10. [Discussion Section](#discussion)
-11. [Conclucsion](#conclusion)
-12. [Statement of Collaboration](#collab)
+8. [Model 3: Logistic Regression (Acne Product Recommender)](#model3)
+9. [Model 4: Neural Network (Acne Product Recommender](#model4)
+10. [Results Section](#results)
+11. [Discussion Section](#discussion)
+12. [Conclucsion](#conclusion)
+13. [Statement of Collaboration](#collab)
 
 ## Introduction: <a name="introduction"></a>
 Taking care of one’s skin is essential for both physical and mental wellbeing, however finding the right skincare products can be challenging given the large variety available. Products differ in many categories such as ingredients, purpose, and price. Along with that, their effectiveness is subjective, as it is dependent on the user's own skin type and allergens. The goal of our project is to address this challenge by creating a recommendation system that suggests skincare products based on user concerns and preferences. 
@@ -334,7 +335,7 @@ for index in recommended_indices:
 ~~~
 
 ### Model 2: Linear Regression (Price and Reviews) <a name="model2"></a>
-The following methods were used for training our second model:
+The following methods were used for training our second model using PRICE:
 ~~~
 import pandas as pd
 import seaborn as sns
@@ -390,9 +391,7 @@ from sklearn.linear_model import LinearRegression
 from sklearn.preprocessing import PolynomialFeatures
 from sklearn.metrics import mean_squared_error
 from sklearn.model_selection import train_test_split
-~~~
 
-~~~
 reg = LinearRegression()
 regmodel = reg.fit(X_train, y_train)
 ~~~
@@ -457,109 +456,375 @@ plt.plot(X_train, y_train, color='m')
 plt.show
 ~~~
 
+Model using Rating:
+~~~
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LinearRegression
+from sklearn.metrics import mean_squared_error
+~~~
+
+~~~
+data.isnull().sum()
+data.dropna(subset=["rating"],inplace=True)
+data.isnull().sum()
+~~~
+
+~~~
+X = data[["brand_id", "loves_count","out_of_stock", "new", "online_only","limited_edition"]]
+
+y = data["rating"]
+X
+~~~
+
+~~~
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, random_state = 42 )
+~~~
+
+~~~
+reg = LinearRegression()
+regmodel = reg.fit(X_train, y_train)
+
+yhat_train = reg.predict(X_train)
+yhat_test = reg.predict(X_test)
+~~~
+
+~~~
+mse = mean_squared_error(y_test, yhat_test)
+print("MSE test:",mse)
+mse_train = mean_squared_error(y_train, yhat_train)
+print("MSE train:",mse_train)
+~~~
+
+~~~
+sns.heatmap(data[["brand_id", "loves_count","out_of_stock", "new", "online_only","rating"]].corr(), annot = True, vmin=-1, vmax=1, center=0)
+~~~
+
+~~~
+import seaborn as sns
+import matplotlib.pyplot as plt
+sns.scatterplot(x = list(range(0,len(regmodel.coef_))), y = regmodel.coef_)
+x = list(range(0,len(regmodel.coef_)))
+plt.plot(x, regmodel.coef_, color = 'm')
+~~~
+
+~~~
+plt.figure(figsize=(10, 6))
+plt.scatter(y_test, yhat_test, alpha=0.7)
+plt.xlabel('Actual Ratings')
+plt.ylabel('Predicted Ratings')
+plt.title('Actual vs Predicted Ratings')
+plt.plot([min(y_test), max(y_test)], [min(y_test), max(y_test)], 'r--')
+plt.show()
+~~~
+
+~~~
+from sklearn.preprocessing import PolynomialFeatures
+polynomial_features= PolynomialFeatures(degree=2)
+x_poly = polynomial_features.fit_transform(X)
+print('Polynomial Features: [1,x,x**2]')
+print(x_poly[0])
+~~~
+
+~~~
+x_poly_train = x_poly[:-20]
+y_train = y[:-20]
+
+x_poly_test = x_poly[-20:]
+y_test = y[-20:]
+~~~
+
+~~~
+model = LinearRegression()
+model.fit(x_poly_train, y_train)
+yhat_train_pred = model.predict(x_poly_train)
+yhat_test_pred = model.predict(x_poly_test)
+
+print("Model weights: ")
+print(model.coef_)
+~~~
 
 
+### Model 3: Logistic Regression (Acne Product Recommender) <a name="model3"></a>
+**Please see [this notebook](https://colab.research.google.com/drive/1UZuKvfh_-BFqsnquGwFd7OzI7wOTJZH0#scrollTo=rRzWQjMi3oKr) to see all of the redone Preprocessing and Exploration methods, as it differs slightly from the previous models, not included here to prevent the ReadME from being too long.**
+
+~~~
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import accuracy_score, confusion_matrix, classification_report
+~~~
+
+~~~
+product_names = acne_df['Name']
+X = acne_df[['Ingredients']]
+y = acne_df['Acne Fighting']
+~~~
+
+~~~
+from sklearn.preprocessing import MultiLabelBinarizer
+
+def str_to_list(x):
+   return x.strip().split(',')
 
 
-### Model 3: Logistic Regression (Acne product recommender) <a name="model3"></a>
+X['Ingredients'] = X['Ingredients'].dropna().apply(str_to_list)
+~~~
 
+~~~
+mlb = MultiLabelBinarizer()
 
+one_hot_encoded = mlb.fit_transform(X['Ingredients'])
+
+one_hot_df = pd.DataFrame(one_hot_encoded, columns=mlb.classes_)
+
+X = one_hot_df
+X.head()
+~~~
+
+~~~
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=1)
+~~~
+
+~~~
+model = LogisticRegression()
+model.fit(X_train, y_train)
+~~~
+
+~~~
+yhat_test = model.predict(X_test)
+yhat_train = model.predict(X_train)
+~~~
+
+Model Accuracy and Confusion Matrix:
+~~~
+accuracy = accuracy_score(y_test, yhat_test)
+conf_matrix = confusion_matrix(y_test, yhat_test)
+class_report = classification_report(y_test, yhat_test)
+
+print(f"Accuracy: {accuracy}")
+print("Confusion Matrix:")
+print(conf_matrix)
+print("Classification Report:")
+print(class_report)
+~~~
+
+~~~
+sns.heatmap(conf_matrix, annot=True, fmt='d', xticklabels=['Non-Acne Fighting', 'Acne Fighting'], yticklabels=['Non-Acne Fighting', 'Acne Fighting'])
+plt.xlabel('Predicted')
+plt.ylabel('Actual')
+plt.title('Confusion Matrix for LogReg Model')
+plt.show()
+~~~
+
+~~~
+sns.scatterplot(x = list(range(0,len(model.coef_[0]))),y = model.coef_[0])
+~~~
+
+~~~
+coefs = model.coef_[0]
+important_coefs = [i for i in range(len(coefs)) if coefs[i] > 2]
+important_ingredients = mlb.classes_[important_coefs]
+print([(i, j) for i, j in zip(important_ingredients, coefs[important_coefs])])
+~~~
+
+### Model 4: Neural Network (Acne Product Recommender) <a name="model4"></a>
+**Please see [this notebook](https://colab.research.google.com/drive/1UZuKvfh_-BFqsnquGwFd7OzI7wOTJZH0#scrollTo=rRzWQjMi3oKr) to see all of the redone Preprocessing and Exploration methods, as it differs slightly from the previous models, not included here to prevent the ReadME from being too long.**
+
+~~~
+import pandas as pd
+import tensorflow as tf
+from sklearn.model_selection import train_test_split
+from tensorflow import keras
+from keras.models import Sequential
+from keras.layers import Dense
+from sklearn.metrics import classification_report
+~~~
+
+~~~
+def create_model():
+    model = Sequential()
+    model.add(Dense(units=128, activation='relu', input_shape=(X_train.shape[1],)))
+    model.add(Dense(units=64, activation='relu'))
+    model.add(Dense(units=32, activation='relu'))
+    model.add(Dense(units=8, activation='relu'))
+    model.add(Dense(units=1, activation='sigmoid'))
+    model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
+    return model
+~~~
+
+~~~
+model_nn = create_model()
+history = model_nn.fit(X_train, y_train, epochs=10, batch_size=10)
+~~~
+
+~~~
+plt.plot(history.history['loss'], label='train_loss')
+plt.title('Loss')
+plt.xlabel('Epochs')
+plt.ylabel('Loss')
+plt.legend()
+~~~
+
+~~~
+y_test_pred = model_nn.predict(X_test)
+y_test_pred = (y_test_pred > 0.5).astype(int)
+print(classification_report(y_test, y_test_pred))
+~~~
 
 
 ## Results Section:  <a name="results"></a>
+**Results include input in the screenshot, so that the reader can understand what line actually produced the following results.**
+
 ### Results from the Data Exploration Methods:
+Data Exp 1: 
 ![image](https://github.com/user-attachments/assets/7577bcfa-80e2-4a4c-9695-fa3691e6e12d)
 
+Data Exp 2: 
 ![image](https://github.com/user-attachments/assets/1dd126fc-e3bf-4b6b-8b88-a0d1a9554103)
 
+Data Exp 3: 
 ![image](https://github.com/user-attachments/assets/23f60dc0-ca84-4381-b6d6-bb74735902bd)
 
+Data Exp 4: 
 ![image](https://github.com/user-attachments/assets/ffe7d9dc-0ac8-4bc5-ade1-b7e538b8f531)
 
+Data Exp 5: 
 ![image](https://github.com/user-attachments/assets/68e8ee5e-f01c-4b46-ab92-6620f41cdb2a)
 
+Data Exp 6: 
 ![image](https://github.com/user-attachments/assets/f7e2c367-8edc-4051-83ac-43a0a10e1cb4)
 
 
 ### Results from Preprocessing:
+PP 1:
 ![image](https://github.com/user-attachments/assets/c214f053-bdea-4ab4-be76-321334894f64)
 
+PP 2:
 ![image](https://github.com/user-attachments/assets/310e398e-53ff-4fc4-84df-b8a68b590558)
 
+PP 3:
 ![image](https://github.com/user-attachments/assets/4efd0413-30c4-4b64-9e7b-be8b189c46c3)
 
+PP 4:
 ![image](https://github.com/user-attachments/assets/b28e3dbc-2784-4989-9e13-0914aa728b82)
 
+PP 5:
 ![image](https://github.com/user-attachments/assets/7353f59a-5cea-436e-bc0f-7ab1e48aa564)
 
+PP 6:
 ![image](https://github.com/user-attachments/assets/00513194-c211-4d77-b635-0c72c62985d8)
 
+PP 7:
 ![image](https://github.com/user-attachments/assets/cb5fe713-88f5-4c03-b96b-79ea5e4ff39d)
 
+PP 8:
 ![image](https://github.com/user-attachments/assets/965f8287-76ea-4bb7-9630-19db7d2e6fde)
 
+PP 9:
 ![image](https://github.com/user-attachments/assets/8938745f-9b74-442b-99a0-12228d35a005)
 
+PP 10:
 ![image](https://github.com/user-attachments/assets/9066d5e7-e22f-4795-b25f-97da1d318d47)
 
+PP 11:
 ![image](https://github.com/user-attachments/assets/2261bbb6-34cc-48ce-b4a9-f02078a6b815)
 
+PP 12:
 ![image](https://github.com/user-attachments/assets/7670232d-e205-4287-94a3-86b3d8f9e663)
 
+PP 13:
 ![image](https://github.com/user-attachments/assets/3e323763-5960-40f3-ab83-d8dbdf1f2fa6)
 
+PP 14:
 ![image](https://github.com/user-attachments/assets/10ea3bff-d298-4a33-b63f-d68ac83af7cc)
 
+PP 15:
 ![image](https://github.com/user-attachments/assets/5c61a969-cd19-4b3e-9044-67e04fb64d6d)
 
+PP 16:
 ![image](https://github.com/user-attachments/assets/1fca022d-1688-4e26-96f9-00d0aaa1110b)
 
+PP 17:
 ![image](https://github.com/user-attachments/assets/f2bdab60-6297-4076-ac26-56f16929e217)
 
+PP 18:
 ![image](https://github.com/user-attachments/assets/0a8063b8-904c-4e6b-908f-1a14d680964e)
 
+PP 19:
 ![image](https://github.com/user-attachments/assets/45d8357b-7e0c-4689-83f8-c9d987b7b1d2)
 
 ### Results from Model 1
+Model1 1:
 ![image](https://github.com/user-attachments/assets/70d80747-417d-401f-92c3-9e82e9e22828)
 
+Model1 2:
 ![image](https://github.com/user-attachments/assets/422f1074-e2dd-4302-b732-0de66d6a1778)
 
+Model1 3:
 ![image](https://github.com/user-attachments/assets/6bdff7ff-0047-47ac-a2ba-0625c26a207a)
 
+Model1 4:
 ![image](https://github.com/user-attachments/assets/706e3395-9598-4fc9-90ea-d6915fabde1a)
 
 ### Results from Model 2
 #### Results from Linear Regression on Price: 
+LinRegPrice 1:
 ![image](https://github.com/user-attachments/assets/4e0f9ac6-f88d-474a-8676-ec6b32bc2436)
 
+LinRegPrice 2:
 ![image](https://github.com/user-attachments/assets/35271b08-4939-4273-bbeb-3994d1147acf)
 
+LinRegPrice 3:
 ![image](https://github.com/user-attachments/assets/f5d2fc20-8cfa-4747-b4b7-da106e21f036)
 
 #### Results from Linear Regression on Rating: 
+LinRegRat 1:
 ![image](https://github.com/user-attachments/assets/e059d0aa-1bce-4a01-ace8-ab7c1a31c070)
 
+LinRegRat 2:
 ![image](https://github.com/user-attachments/assets/1af4535b-018c-4378-9cbb-6c5ff3f2a40f)
 
+LinRegRat 3:
 ![image](https://github.com/user-attachments/assets/ab83aa29-578f-4c3b-8184-7228afd1f3d4)
 
+LinRegRat 4:
 ![image](https://github.com/user-attachments/assets/91309e96-dd49-495a-bf3a-564234271877)
 
+LinRegRat 5:
 ![image](https://github.com/user-attachments/assets/e11950f8-3a52-40c1-9505-0243f7949396)
 
+LinRegRat 6:
 ![image](https://github.com/user-attachments/assets/611de3ab-b4e1-4a7f-8f16-754125b29ac1)
 
+LinRegRat 7:
 ![image](https://github.com/user-attachments/assets/f16a7caa-8209-4ac7-89c7-7ba99c2b4c5a)
 
 
 ### Results from Model 3
+LogReg 1:
+![image](https://github.com/user-attachments/assets/887657be-8ca8-4d3e-a027-be00062a2604)
+
+LogReg 2:
+![image](https://github.com/user-attachments/assets/0d1a7d0f-f47d-4a9f-a4a2-677b0c2e1744)
+
+LogReg 3:
+![image](https://github.com/user-attachments/assets/2ab4887b-f0e2-456e-b4d4-044561e6db63)
+
+LogReg 4:
+![image](https://github.com/user-attachments/assets/04b8011c-d5aa-4de6-9cad-15e5ea7ba366)
+
+LogReg 5:
+![image](https://github.com/user-attachments/assets/648a2b4c-8960-427b-be49-25da1eacb074)
 
 
+### Results from Model 4
+NN 1:
+![image](https://github.com/user-attachments/assets/4c13e0fa-8527-4a46-a5cc-29eb849ceee7)
 
+NN 2:
+![image](https://github.com/user-attachments/assets/903f146e-6fad-490e-8294-a0f2072cf089)
 
-
-
+NN 3:
+![image](https://github.com/user-attachments/assets/d199057e-caa3-40ef-81f4-e23bdaee1afa)
 
 
 
