@@ -22,7 +22,7 @@ Model 3 and Model 4 use the same dataset and solve the same issue.
     3. [Model 1: Recommendation System](#model12)
     4. [Model 2: Linear Regression (Price and Reviews)](#model22)
     5. [Model 3: Logistic Regression (Acne Product Recommender)](#model32)
-    6. [Model 4: Neural Network (Acne Product Recommender])(#model42)
+    6. [Model 4: Neural Network (Acne Product Recommender)](#model42)
 12. [Discussion Section](#discussion)
 13. [Conclucsion](#conclusion)
 14. [Statement of Collaboration](#collab)
