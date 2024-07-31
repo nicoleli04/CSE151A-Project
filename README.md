@@ -24,7 +24,12 @@ Below is a figure that shows a tree with the different types of Recommender Syst
 
 ![image](https://github.com/user-attachments/assets/03af8f99-80ee-41e8-a8c8-b13b49d76752)
 
-The approach that seemed the most 
+The approach that seemed the most relevant to our problem is a model-based filtering technique where we use both association techniques and clustering approaches to see what products are the most similar to one another.
+
+Here is another figure that we used to help understand how our model should work, from (this Kaggle notebook)[https://www.kaggle.com/code/dyahnurlita/skincare-recommendation-system-using-cf-method]. While they also implemented a recommendation system, theirs is different from ours as they use reviews and rating as the main method for recommending a product, while ours is different, focusing instead on other things like ingredients and use of the product. 
+![image](https://github.com/user-attachments/assets/48c185fc-91fd-4ebe-a118-c757d205f0f0)
+
+
 
 
 
