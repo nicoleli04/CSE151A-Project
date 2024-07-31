@@ -57,6 +57,12 @@ Above is our confusion matrix for our Logistic Regression model. We observe that
 Figure for Section 3
 ![image](https://github.com/user-attachments/assets/b5113c49-82ff-444b-b27a-50b961a29331)
 
+
+Figure from Section 4
+
+![image](https://github.com/user-attachments/assets/66202607-befe-4c2e-bc40-4b039eab6783)
+
+
 ## Methods Section: <a name="methods"></a>
 ### Data Exploration <a name="data"></a>
 In exploring our data, we used the following methods:
