@@ -5,6 +5,9 @@
 - [Model 2 Notebook](https://github.com/nicoleli04/CSE151A-Project/blob/main/Two_Model_Predictor_Skincare_Recommender.ipynb)
 - [MileStone 4: Model 3 & 4 Notebook](https://colab.research.google.com/drive/1UZuKvfh_-BFqsnquGwFd7OzI7wOTJZH0#scrollTo=MTfIhu3hAh8P)
 
+## Important Note
+In our project, we developed four different models. The first was a recommender system. However, after office hours, we learned that our model isn't really machine learning and our dataset lacks a ground truth, making it unsuitable for this project. Our last two models are both focussing on the same task and we will be mainly focussing on these two models in the discussion.
+
 # Writeup Table of Contents:
 Model 3 and Model 4 use the same dataset and solve the same issue.
 1. [Introduction](#introduction)
