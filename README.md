@@ -482,11 +482,17 @@ plt.show
 
 
 ### Results from Preprocessing:
+
+#### Section 1 results: 
 ![image](https://github.com/user-attachments/assets/c214f053-bdea-4ab4-be76-321334894f64)
 
 ![image](https://github.com/user-attachments/assets/310e398e-53ff-4fc4-84df-b8a68b590558)
 
 ![image](https://github.com/user-attachments/assets/4efd0413-30c4-4b64-9e7b-be8b189c46c3)
+
+
+
+#### Section 2 results:
 
 ![image](https://github.com/user-attachments/assets/b28e3dbc-2784-4989-9e13-0914aa728b82)
 
