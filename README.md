@@ -42,6 +42,12 @@ Below is a figure that shows a tree with the different types of Recommender Syst
 
 ![image](https://github.com/user-attachments/assets/03af8f99-80ee-41e8-a8c8-b13b49d76752) 
 
+
+![image](https://github.com/user-attachments/assets/f2c3c6e0-3830-4249-9875-213e346586dc)
+
+
+![image](https://github.com/user-attachments/assets/47ad4e5e-ebef-4dd9-bb27-004eaddc5bd3)
+
 ## Methods Section: <a name="methods"></a>
 ### Data Exploration <a name="data"></a>
 In exploring our data, we used the following methods:
