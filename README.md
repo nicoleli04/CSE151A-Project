@@ -1120,7 +1120,7 @@ Overall, all members contributed to the project, as the project was mostly worke
 
 - Nicole Li: Created Github Repo, helped write the similarity matrix 
 
-- Wang Liu: Developed the similarity-based dataset merging process, implemented the Nerual Network for acne classification task.
+- Wang Liu: Developed the similarity-based dataset merging process, implemented the Neural Network for acne classification task.
 
 - Evelyn Mares-moreno: Talked to tutors, wrote code for Milestone 4 and updated group members about these changes 
 
