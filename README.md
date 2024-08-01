@@ -1030,9 +1030,6 @@ NN 4.2：
 
 ## Discussion Section  <a name="discussion"></a>
 
-- add in why things happened the way they did
-- the how and why of it
-
 
 ### Data Exploration Discussion
 In our data exploration, we were simply trying to understand our data better, leading to a lot of viewing the previews of our sephora, indonesia, and skinsort dataframes. We also wanted to see how many prices were listed as 0, and wanted to understand what effects each of the products had by reviewing the “afteruse” column. 
