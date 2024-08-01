@@ -58,14 +58,6 @@ Below is our confusion matrix for our Logistic Regression model. We observe that
 Figure for Model 3
 ![image](https://github.com/user-attachments/assets/b5113c49-82ff-444b-b27a-50b961a29331)
 
-The figure below shows the decrease in log loss. This is exactly what we want to see. The lower the log loss the better the model. 
-
-Figure from Model 4
-![image](https://github.com/user-attachments/assets/66202607-befe-4c2e-bc40-4b039eab6783)
-
-The model below is an accuracy graph. This indicates that our model keeps getting better.
-![image](https://github.com/user-attachments/assets/943ea906-cbb5-4434-b34c-d463eece1f6a)
-
 Figure from Model 4 Hyperparameter Tuning
 
 Plot of Hyperparameter Tuning best model loss over epochs:
