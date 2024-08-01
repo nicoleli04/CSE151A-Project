@@ -1019,6 +1019,10 @@ NN 3:
 
 ![image](https://github.com/user-attachments/assets/d199057e-caa3-40ef-81f4-e23bdaee1afa)
 
+NN 4:
+![image](https://github.com/user-attachments/assets/d2b9d42a-6f80-4a09-af84-9091109cdc47)
+
+
 Hyperparameter Tuning Result
 
 NN 4.1:
