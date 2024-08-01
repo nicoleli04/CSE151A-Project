@@ -701,6 +701,7 @@ print(classification_report(y_test, y_test_pred))
 
 Hyperparameter Tuning:
 
+~~~
 units_input: Number of neurons in the input layer (32-128, step 32).
              Number of neurons in the hidden layer,
              increasing the number of units in deeper layers
@@ -708,7 +709,7 @@ units_input: Number of neurons in the input layer (32-128, step 32).
 activation_input: Activation function for the input and hidden layer ('relu' or 'tanh').
 
 num_hidden_layers: Number of hidden layers (1-3).
-
+~~~
 
 ~~~
 def build_model(hp):
@@ -1033,10 +1034,6 @@ NN 4.2：
 
 
 ## Discussion Section  <a name="discussion"></a>
-
-- add in why things happened the way they did
-- the how and why of it
-
 
 ### Data Exploration Discussion
 In our data exploration, we were simply trying to understand our data better, leading to a lot of viewing the previews of our sephora, indonesia, and skinsort dataframes. We also wanted to see how many prices were listed as 0, and wanted to understand what effects each of the products had by reviewing the “afteruse” column. 
