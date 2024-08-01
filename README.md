@@ -64,8 +64,14 @@ Figure from Model 4
 ![image](https://github.com/user-attachments/assets/66202607-befe-4c2e-bc40-4b039eab6783)
 
 The model below is an accuracy graph. This indicates that our model keeps getting better.
-figure from Model 4
 ![image](https://github.com/user-attachments/assets/943ea906-cbb5-4434-b34c-d463eece1f6a)
+
+Figure from Model 4 Hyperparameter Tuning
+
+Plot of Hyperparameter Tuning best model loss over epochs:
+
+The model shows signs of overfitting, indicated by the significant increase in validation loss while the training loss remains consistently low.
+![image](https://github.com/user-attachments/assets/960b0ff1-7795-491f-ab51-598c6ca26f6a)
 
 
 ## Methods Section: <a name="methods"></a>
@@ -693,6 +699,76 @@ y_test_pred = (y_test_pred > 0.5).astype(int)
 print(classification_report(y_test, y_test_pred))
 ~~~
 
+Hyperparameter Tuning:
+
+units_input: Number of neurons in the input layer (32-128, step 32).
+             Number of neurons in the hidden layer,
+             increasing the number of units in deeper layers
+
+activation_input: Activation function for the input and hidden layer ('relu' or 'tanh').
+
+num_hidden_layers: Number of hidden layers (1-3).
+
+
+~~~
+def build_model(hp):
+    model = keras.Sequential()
+
+    # Input layer
+    input_units = hp.Int('units_input', min_value=32, max_value=128, step=32)
+    model.add(layers.Dense(
+        units=input_units,
+        activation=hp.Choice('activation_input', ['relu', 'tanh']),
+        input_dim=X.shape[1]))
+
+    # Number of hidden layers
+    num_hidden_layers = hp.Int('num_hidden_layers', min_value=1, max_value=3)
+
+    # Add a variable to keep track of the previous layer's units
+    previous_units = input_units
+
+    # Hidden layers
+    for i in range(num_hidden_layers):
+        units = hp.Int(f'units_{i}', min_value=8, max_value=previous_units, step=8)
+        model.add(layers.Dense(
+            units=units,
+            activation=hp.Choice(f'activation_{i}', ['relu', 'tanh'])
+        ))
+        previous_units = units
+
+    # Output layer
+    model.add(layers.Dense(units=1, activation='sigmoid'))
+
+    # Optimizer
+    model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
+
+    return model
+
+build_model(keras_tuner.HyperParameters())
+~~~
+~~~
+tuner = keras_tuner.RandomSearch(
+    hypermodel=build_model,
+    objective="val_accuracy",
+    max_trials= 20, 
+    seed=15,
+    executions_per_trial= 2,
+    tune_new_entries=True,
+    allow_new_entries=True,
+    max_consecutive_failed_trials=3,
+    directory='my_tune',
+    project_name='tune',
+)
+tuner.search_space_summary()
+~~~
+~~~
+X_train_new, X_val, y_train_new, y_val = train_test_split(X_train, y_train, random_state=42)
+tuner.search(X_train_new, y_train_new, epochs=10, validation_data=(X_val, y_val))
+~~~
+~~~
+models = tuner.get_best_models(num_models=1)
+best_model = models[0]
+~~~
 
 ## Results Section:  <a name="results"></a>
 **Results include input in the screenshot, so that the reader can understand what line actually produced the following results.**
@@ -942,6 +1018,18 @@ NN 2:
 NN 3:
 
 ![image](https://github.com/user-attachments/assets/d199057e-caa3-40ef-81f4-e23bdaee1afa)
+
+Hyperparameter Tuning Result
+
+NN 4.1:
+
+![image](https://github.com/user-attachments/assets/6f8fd2ea-6ad9-4ec2-aa84-5c450ac48c86)
+
+
+NN 4.2：
+![image](https://github.com/user-attachments/assets/f8891ddd-0c61-4bef-935b-dfb3e42040c9)
+
+
 
 
 ## Discussion Section  <a name="discussion"></a>
