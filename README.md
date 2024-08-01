@@ -1064,7 +1064,7 @@ Reflecting back on model 1, it would have been good to implement some sort of ex
 ### Model 2 Discussion
 In our second model, we used Linear Regression to check similarity based on Price and Reviews/Rating.
 
-For our Price based model, we encoded the product type, dropped the column containing price, split our data into an 80-20 split, and created and fit our model to our X and y train values. We then printed out the coefficients, predicted our yhats, and tried to plot our values. We also printed out the MSE for our yhats.
+For our Price based model, we encoded the product type,we MinMaxed the values in columns 'Price', 'Rating', dropped the column containing price, split our data into an 80-20 split, and created and fit our model to our X and y train values. We then printed out the coefficients, predicted our yhats, and tried to plot our values. We also printed out the MSE for our yhats.
 
 At this point in time, we were unsure how to properly plot our Linear Regression model. In the results, you will see that the graph is one that is severely overfitted. In the second plot, you see that the scatter plot is heavily concentrated on both ends of the x-axis, so the resulting fitting curve also looks a bit strange. In the third plot, it looks like we tried to cram too many values onto the x-axis, causing the scatter plot to populate only the first two values. This seems like an issue with the creation of the plot, and the fitting curve also looks strange and does not match the data.
 
@@ -1082,7 +1082,7 @@ In our third model, we decided to tweak the project from a recommendation system
 
 To tackle this, we decided to implement a logistic regression model. This meant that we had to explore and preprocess our data once more to better serve this purpose. These specific methods are not explicitly listed in the writeup, but a link to the notebook is attached. In our preprocessing, we tried to single out products that contained the word “acne” in their results/effect column. In this column, there is both an “Acne Trigger” and “Acne Fighting” category. By keeping both, we are able to train the model on “good” products (those that are acne fighting) and “bad” products (those that are acne triggering). We then get rid of any lingering null values as normal. 
 
-We set our X to be the column of ingredients, and our y to be the ‘Acne Fighting’ data, and used a MultiLabelBinarizer to one hot encode all of our ingredients in our X. We then split the data in an 80-20 split, created our model, predicted our values, and checked for accuracy. We also created a confusion matrix for the model, and plotted our results. 
+We set our X to be the column of ingredients, and our y to be the ‘Acne Fighting’ data, and used a MultiLabelBinarizer to one hot encode all of our ingredients in our X. We then split the data in an 80-20 split, created our model, predicted our values, and checked for accuracy. We also created a confusion matrix, scatterplot and classification report for the model, and plotted our results. 
 
 This model seemed to produce a much better scatterplot than our previous models, and also seemed to have a good accuracy rating. We also printed out a column of “important ingredients,” as these ingredients seemed to contribute most to whether a product was acne fighting or not. Viewing the printed ingredients, we were able to verify that these ingredients are indeed used to prevent acne, helping us believe that our model was effective.
 
@@ -1093,6 +1093,8 @@ In our fourth model, we wanted an implementation that was a neural network, and 
 We then plot the history of the model, to keep an eye on our loss as the epochs are run, and we reach a very very low loss at around 2 epochs. We also create a y_test_prediction, and print out a classification report. The classification report seems to be at a good accuracy, seeing as it is at 97%.
 
 To improve on this model, we could have tried out other configurations of hidden layers and activation functions, further tweaking and improving its overall performance. We could have also tried to test it further by including more 'noise' to the data that the model would have to sort through. 
+
+
 
 ### Model 3 vs Model 4 Comparison
 Based on the results from the classification report, the logistic regression model (model 3) slightly outperforms the neural network model (model 4) in terms of accuracy, precision, and recall. The logistic regression model shows better overall performance for our dataset. Both our model 3 and model 4 have good accuracy, with scores of 0.99 and 0.97 respectively.
