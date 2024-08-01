@@ -5,7 +5,7 @@
 - [Model 2 Notebook](https://github.com/nicoleli04/CSE151A-Project/blob/main/Two_Model_Predictor_Skincare_Recommender.ipynb)
 - [Milestone 4: Model 3 & 4 Notebook](https://colab.research.google.com/drive/1UZuKvfh_-BFqsnquGwFd7OzI7wOTJZH0#scrollTo=MTfIhu3hAh8P)
 
-## Important Note
+## Important Note for Graders
 In our project, we developed four different models. The first was a recommender system. However, after office hours, we learned that our model isn't really machine learning and our dataset lacks a ground truth, making it unsuitable for this project. Our last two models are both focusing on the same task and we will be mainly focusing on these two models in the discussion.
 
 # Writeup Table of Contents:
@@ -693,6 +693,7 @@ print(classification_report(y_test, y_test_pred))
 
 Hyperparameter Tuning:
 
+~~~
 units_input: Number of neurons in the input layer (32-128, step 32).
              Number of neurons in the hidden layer,
              increasing the number of units in deeper layers
@@ -700,7 +701,7 @@ units_input: Number of neurons in the input layer (32-128, step 32).
 activation_input: Activation function for the input and hidden layer ('relu' or 'tanh').
 
 num_hidden_layers: Number of hidden layers (1-3).
-
+~~~
 
 ~~~
 def build_model(hp):
@@ -1041,7 +1042,9 @@ In our exploration, we would have improved by taking a deeper look into our data
 ### Preprocessing Discussion
 In our preprocessing step, we started out with a pairplot in order to visualize the data better, starting off with Country. This was not entirely helpful, so we decided to move on to dropping all our null values to clean up our datasets. We then used the describe and info functions to better see what is happening in our data. We then realized that many of the columns were not named in the exact same way, so we changed these names so that merging the datasets later would be much easier. 
 
-We also used a similarity matrix in an attempt to match reviews to certain products based on how similar they are in product name on reviews, and we also wanted to attach all of the reviews to the product. 
+We also used a similarity matrix in an attempt to match reviews to certain products based on how similar they are in product name on reviews, and we also wanted to attach all of the reviews to the product. We generated another pairplot afterwards, shown by PP 11, and found that creating a pairplot using product type revealed more data than simply doing it by country. We also created countplots using type, and found that type label 21 seemed to have the most products. 
+
+A histplot indicated that most of the products ranged in the 4.2-4.3 area, meaning most of the products were well received. Our second histplot indicated that most of the products were less than 100 dollars, with the most amount of products ranging near 20-30 dollars. 
 
 Other preprocessing methods included checking the shape of our data, trying to locate where our null values are, and using value_counts() to see how many instances of each entry we have. 
 
@@ -1050,7 +1053,9 @@ In hindsight, using the similarity matrix to try to “force” products with re
 ### Model 1 Discussion
 In our first model, we used a NearestNeighbors model with a cosine metric, and tried to configure it so that it would recommend 5 products with a similar name to a product fed into the recommender. We fit it to our encoded dataframe where the column ‘Name’ was dropped, trying to utilize the indices of the different products so that we could print them out, and so that we would be working with an easier datatype. 
 
-The first large chunk of code presented the information in a difficult way to read, so the second chunk of code presents the results in a more readable way. The second way showcases nearly all of the columns, but some information like product type is truncated when viewed in Google Colab. Here, we can see the first 3-5 ingredients of each product, allowing for us to “hand-check” the similarity further. 
+For model 1, we were not actually able to produce any meaningful graphs, as we were unsure how exactly to plot these results, since using this recommendation model was not actually covered in class. We were simply able to produce text results, but we were still able to glean some useful information from this output. 
+
+The first large chunk of code presented the results in a difficult way to read, so the second chunk of code presents the results in a more readable way. The second way showcases nearly all of the columns, but some information like product type is truncated when viewed in Google Colab. Here, we can see the first 3-5 ingredients of each product, allowing for us to “hand-check” the similarity between this product and the original product further. 
 
 Reflecting back on model 1, it would have been good to implement some sort of extra and automated check that runs through the ingredients of the products recommended, to see if they are similar in this way that doesn’t require us to check it by hand. By using only name as the criteria, it is a much looser requirement than something like the ingredients. By combining both, we might have been able to create a better model. We also only ran the model on the first index, 0, and didn’t try it out on other products. Testing it out on more products would have been beneficial as well. 
 
@@ -1085,9 +1090,9 @@ In our fourth model, we wanted an implementation that was a neural network, and 
 
 We then plot the history of the model, to keep an eye on our loss as the epochs are run, and we reach a very very low loss at around 2 epochs. We also create a y_test_prediction, and print out a classification report. The classification report seems to be at a good accuracy, seeing as it is at 97%.
 
-To improve on this model, we could have tried out other configurations of hidden layers and activation functions, further tweaking and improving its overall performance. We could have also tried to test it further by including more 'noise' to the data that the model would have to sort through. 
+We also implemented some Hyperparameter tuning, where we tweak the units_input, activation_input, and the number of hidden layers. From this, we found that the supposed best model differed from the original neural network that was implemented. The original had unit sizes of 128, 64, 32, 8, and 1 for the respective layers but the best model had units 96, 24, 8, 8, and 1. However, when we compare the accuracy between the original and the tuned model, we find that the accuracy actually decreases with the tuning. Originally our accuracy was 96%, but after tweaking it was 91%. 
 
-
+To improve on this model, we could have tried out even more configurations of hidden layers and activation functions, further tweaking and improving its overall performance. We could have also tried to test it further by including more 'noise' to the data that the model would have to sort through. 
 
 ### Model 3 vs Model 4 Comparison
 Based on the results from the classification report, the logistic regression model (model 3) slightly outperforms the neural network model (model 4) in terms of accuracy, precision, and recall. The logistic regression model shows better overall performance for our dataset. Both our model 3 and model 4 have good accuracy, with scores of 0.99 and 0.97 respectively.
@@ -1095,15 +1100,15 @@ Based on the results from the classification report, the logistic regression mod
 We were surprised by the high accuracy achieved by both of our models. We discovered that the original website (skinsort) generates the after-use effect labels based on the ingredients, which is a similar approach to our methodology. This explains the high accuracy of our models.
 
 ## Conclusion <a name="conclusion"></a>
-In conclusion, overall this project was a great learning experience for our group, as we were forced to work with multiple types of models causing us to work with unique concepts, even those that were not covered explicitly in class (NearestNeighbors, similarity matrices when it was only week 2, e.t.c.). However, I (Ilia) believe that a big issue with our project was scope. Our initial idea was a very appealing one, but because our datasets were not of the best quality, this made it difficult for us as the project went on. There was a lot of cleaning and preprocessing to complete, forcing us to spend less time on implementation of the models themselves, leading to many errors, issues, and gaps in knowledge that could not be filled within the Milestone deadlines. 
+In conclusion, overall this project was a great learning experience for our group, as we were forced to work with multiple types of models causing us to work with unique concepts, even those that were not covered explicitly in class (NearestNeighbors, similarity matrices when it was only week 2, e.t.c.). However, I (Ilia) believe that a big issue with our project was scope. Our initial idea was a very appealing one, but because our datasets were not of the best quality, this made it difficult for us as the project went on. There was a lot of cleaning and preprocessing to complete at each step, forcing us to spend less time on implementation of the models themselves, leading to many errors, issues, and gaps in knowledge that could not be filled within the Milestone deadlines. 
 
-However, since we have been able to work with this idea, these models, and these datasets for so long, as a group we can now continue on and further build onto this project. One of the things we discussed previously was developing some type of website, where users can input products that they currently use, skin issues they’d like to solve (dryness, acne, blackheads, e.t.c), and allergens and we can use the models we’ve worked on (after tweaking and refining) to recommend products. We were also hoping to include the price, overall rating, and places the user may be able to buy said products after presenting them. 
+However, since we have been able to work with this idea, these models, and these datasets for so long, as a group we can now continue on and further build onto this project. One of the things we discussed previously was developing some type of website, where users can input products that they currently use, skin issues they’d like to solve (dryness, acne, blackheads, e.t.c), and allergens they may have and we can use the models we’ve worked on (after tweaking and refining) to recommend products. We were also hoping to include the price, overall rating, and places the user may be able to buy said products after presenting them. 
 
 In order to do this, however, we would have to spend more research finding better datasets. This project has potential to continue, and fills the need for an easy, simple, and accessible way for people to get into skincare. 
 
 
 ## Statement of Collaboration  <a name="collab"></a>
-Overall, all members contributed to the project, as the project was mostly worked on with multiple people working together at a time. We all joined several zoom meetings together, or met in-person as a team to work on the project. We would share our screen and take turns programming different sections, often with feedback or edits from the others. We brainstormed all the ideas for the project together, bouncing ideas off of and changing ideas based on everybody's feedback. We also took turns going to office hours to discuss with TAs, and sometimes all of us attended together. For the more specific tasks, they are listed below alphabetically by last name: 
+Overall, every member contributed to the project, as the project was mostly worked on with multiple people working together at a time. There were rarely times where only one person was working on the project at a time. We all joined several zoom meetings together, or met in-person as a team to work on the project. We would share our screen and take turns programming different sections, often with feedback or edits from the others. We brainstormed all the ideas for the project together, bouncing ideas off of and changing ideas based on everybody's feedback. We also took turns going to office hours to discuss with TAs and tutors, and sometimes attendomg together. For the more specific tasks, they are listed below alphabetically by last name: 
 
 - Ilia Aballa: Uploaded early datasets, helped organize some meetings/reserve study room, attempted to plot graphs for Milestone 3, completed writeup 
 
